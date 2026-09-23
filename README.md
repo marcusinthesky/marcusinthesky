@@ -21,9 +21,9 @@ My work spans information geometry, representation learning, spatial econometric
 ## Latest writing
 
 <!-- WRITING:START -->
-- [Models are Markup, Tokens are Features](https://huggingface.co/blog/marcusinthesky/models-are-markup-tokens-are-features) — Hugging Face
 - [Reproducibility is a Graph](https://marcusinthesky.github.io/pricing-perspective/blog/reproducibility-is-a-graph/) — Pricing Perspective
 - [The Tidal Wave of AI Research in Finance](https://marcusinthesky.github.io/pricing-perspective/blog/tidal-wave-of-ai-research-in-finance/) — Pricing Perspective
+- [Vintage Reproducible ET Tax Models](https://marcusinthesky.github.io/pricing-perspective/blog/vintage-reproducible-ettax-models/) — Pricing Perspective
 <!-- WRITING:END -->
 
 ## GitHub activity
