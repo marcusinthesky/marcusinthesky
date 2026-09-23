@@ -1,6 +1,9 @@
 import { profile, projects, publications, writing } from "@marcusinthesky/content";
 import { ButtonLink, SectionHeading } from "@marcusinthesky/ui";
 
+import { AppearingIn } from "@/components/appearing-in";
+import { AskAi, researchPrompt } from "@/components/ask-ai";
+import { GaltonBoard } from "@/components/galton-board";
 import { ProjectCard } from "@/components/project-card";
 import { PublicationCard } from "@/components/publication-card";
 import { WritingCard } from "@/components/writing-card";
@@ -8,36 +11,50 @@ import { WritingCard } from "@/components/writing-card";
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-border">
-        <div aria-hidden="true" className="rule-grid absolute inset-0" />
-        <div className="page-shell relative grid gap-10 py-20 sm:py-28 lg:grid-cols-[1.45fr_0.55fr] lg:items-end">
+      <section className="border-b border-border">
+        <div className="page-shell grid items-center gap-12 pt-16 pb-12 sm:pt-24 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+            <p className="animate-rise font-sans text-xs uppercase tracking-[0.18em]">
               Applied AI · Decision science · Quantitative research
             </p>
-            <h1 className="mt-6 max-w-5xl text-balance font-serif text-6xl font-medium leading-[0.98] tracking-[-0.05em] sm:text-8xl">
+            <h1 className="mt-6 text-balance font-serif text-6xl font-medium leading-[0.95] tracking-[-0.05em] sm:text-7xl xl:text-8xl">
               Ideas that survive contact with production.
             </h1>
-            <p className="mt-8 max-w-3xl text-xl leading-relaxed text-muted-foreground sm:text-2xl">
+            <p className="mt-8 max-w-2xl animate-rise text-pretty text-xl leading-relaxed text-muted-foreground [animation-delay:150ms] sm:text-2xl">
               {profile.summary}
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-9 flex animate-rise flex-wrap gap-3 [animation-delay:300ms]">
               <ButtonLink href="/research/">Explore research</ButtonLink>
               <ButtonLink href="/projects/" variant="secondary">
                 See engineering work
               </ButtonLink>
             </div>
+            <div className="mt-8 animate-rise [animation-delay:450ms]">
+              <AskAi label="Ask AI about this research" prompt={researchPrompt} />
+            </div>
           </div>
-          <aside className="border-l border-border pl-6 font-mono text-xs uppercase tracking-[0.11em] text-muted-foreground">
-            <p className="text-foreground">Cape Town, South Africa</p>
-            <ul className="mt-4 list-none space-y-2 p-0">
-              {profile.roles.map((role) => (
-                <li key={role}>{role}</li>
-              ))}
-            </ul>
-          </aside>
+          <figure className="mx-auto w-full max-w-md animate-rise [animation-delay:200ms]">
+            <GaltonBoard />
+            <figcaption className="mt-4 border-t border-border pt-3 font-sans text-xs uppercase tracking-[0.12em] text-muted-foreground">
+              Independent choices → binomial paths → a normal law
+            </figcaption>
+          </figure>
         </div>
+        <dl className="page-shell grid grid-cols-2 gap-y-5 border-t border-border py-6 font-sans text-xs uppercase tracking-[0.12em] sm:grid-cols-4">
+          <div>
+            <dt className="text-muted-foreground">Based in</dt>
+            <dd className="mt-1">Cape Town</dd>
+          </div>
+          {profile.roles.map((role, index) => (
+            <div key={role}>
+              <dt className="text-muted-foreground">Role {String(index + 1).padStart(2, "0")}</dt>
+              <dd className="mt-1">{role}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
+
+      <AppearingIn />
 
       <section className="page-shell py-20">
         <SectionHeading
@@ -54,7 +71,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-muted/35 py-20">
+      <section className="border-y border-border py-20">
         <div className="page-shell">
           <SectionHeading
             description="Work at the intersection of information geometry, representation learning, spatial econometrics, and portfolio risk."
@@ -75,7 +92,7 @@ export default function HomePage() {
       <section className="page-shell py-20">
         <SectionHeading
           description="Selected articles remain at their canonical publishers; this site provides a durable, curated index."
-          eyebrow="Writing"
+          eyebrow="Blog"
           title="Notes from research and production"
         />
         <div className="mt-10 grid gap-5 md:grid-cols-3">

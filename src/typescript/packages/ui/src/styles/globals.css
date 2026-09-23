@@ -3,41 +3,71 @@
 @source "../../../../apps/web/src/**/*.{ts,tsx}";
 @import "./theme.css";
 @import "./typeset.css";
+@import "./motion.css";
 
-* {
-  box-sizing: border-box;
+/* Exposes the theme.css variables as Tailwind utilities (bg-card, text-primary, …). */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-html {
-  background: var(--background);
-  color: var(--foreground);
-  scroll-behavior: smooth;
-  text-rendering: optimizeLegibility;
-}
+@layer base {
+  :root {
+    color-scheme: light;
+    --content-width: 72rem;
+    --reading-width: 46rem;
+  }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background:
-    linear-gradient(180deg, color-mix(in oklab, var(--accent) 8%, transparent), transparent 24rem),
-    var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
-  line-height: 1.6;
-}
+  html {
+    background: var(--background);
+    color: var(--foreground);
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+  }
 
-a {
-  color: inherit;
-  text-underline-offset: 0.2em;
-}
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-serif);
+    line-height: 1.6;
+  }
 
-::selection {
-  background: var(--selection);
-}
+  a {
+    color: inherit;
+    text-underline-offset: 0.2em;
+  }
 
-:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 4px;
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 4px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

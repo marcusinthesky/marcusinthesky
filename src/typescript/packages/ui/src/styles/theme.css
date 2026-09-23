@@ -1,58 +1,38 @@
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-border: var(--border);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --font-sans: var(--font-body);
-  --font-serif: var(--font-display);
-  --font-mono: var(--font-code);
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-}
-
+/*
+ * Site theme — the only file to edit when changing the design language.
+ *
+ * Uses the standard shadcn/ui variable names, so any theme from
+ * https://tweakcn.com or https://ui.shadcn.com/themes can replace this file.
+ * The site is light-only: a pasted `.dark { … }` block is harmless and unused.
+ *
+ * Current values: the "paper and ink" palette from Pricing Perspective —
+ * off-white paper, deep-black ink, serif text, square corners.
+ */
 :root {
-  color-scheme: light dark;
-  --background: oklch(0.985 0.006 82);
-  --foreground: oklch(0.18 0.012 66);
-  --surface: oklch(1 0 0 / 0.74);
-  --muted: oklch(0.94 0.012 78);
-  --muted-foreground: oklch(0.45 0.018 64);
-  --border: oklch(0.78 0.025 70);
-  --accent: oklch(0.54 0.095 42);
-  --accent-foreground: oklch(0.99 0.005 80);
-  --primary: oklch(0.43 0.09 42);
-  --primary-foreground: oklch(0.99 0.005 80);
-  --focus: oklch(0.5 0.12 42);
-  --selection: oklch(0.82 0.08 68 / 0.65);
-  --font-display: Georgia, "Times New Roman", serif;
-  --font-body:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-code: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  --radius-sm: 0.2rem;
-  --radius-md: 0.45rem;
-  --content-width: 72rem;
-  --reading-width: 46rem;
-}
+  --background: #f6f6f1;
+  --foreground: #050505;
+  --card: #fcfcf9;
+  --card-foreground: #050505;
+  --popover: #fcfcf9;
+  --popover-foreground: #050505;
+  --primary: #050505;
+  --primary-foreground: #fcfcf9;
+  --secondary: #ecece5;
+  --secondary-foreground: #1c1c1a;
+  --muted: #ecece5;
+  --muted-foreground: #3d3d38;
+  --accent: #ecece5;
+  --accent-foreground: #050505;
+  --destructive: #b42318;
+  --border: #b8b8ae;
+  --input: #b8b8ae;
+  --ring: #050505;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: oklch(0.16 0.012 62);
-    --foreground: oklch(0.93 0.012 76);
-    --surface: oklch(0.21 0.014 62 / 0.82);
-    --muted: oklch(0.25 0.016 62);
-    --muted-foreground: oklch(0.72 0.018 70);
-    --border: oklch(0.39 0.025 62);
-    --accent: oklch(0.73 0.1 62);
-    --accent-foreground: oklch(0.16 0.012 62);
-    --primary: oklch(0.43 0.09 42);
-    --primary-foreground: oklch(0.99 0.005 80);
-    --focus: oklch(0.78 0.12 65);
-    --selection: oklch(0.48 0.09 55 / 0.7);
-  }
+  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif:
+    ui-serif, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia,
+    "Times New Roman", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --radius: 0rem;
 }

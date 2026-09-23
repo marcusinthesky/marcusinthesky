@@ -1,6 +1,7 @@
 import type { Project } from "@marcusinthesky/content";
 import { Badge, Card } from "@marcusinthesky/ui";
-import { ArrowUpRight } from "lucide-react";
+
+import { NudgeArrow } from "@/components/nudge-arrow";
 import Link from "next/link";
 
 export function ProjectCard({
@@ -24,10 +25,10 @@ export function ProjectCard({
       </Heading>
       <p className="mt-3 flex-1 text-muted-foreground">{project.summary}</p>
       <Link
-        className="mt-7 inline-flex min-h-11 items-center gap-2 self-start font-mono text-xs uppercase tracking-[0.12em] text-accent"
+        className="mt-7 inline-flex min-h-11 items-center gap-2 self-start font-sans text-xs uppercase tracking-[0.12em] text-primary after:absolute after:inset-0"
         href={`/projects/${project.slug}/`}
       >
-        Read case study <ArrowUpRight aria-hidden="true" size={15} />
+        <span className="underline-draw">Read case study</span> <NudgeArrow size={15} />
       </Link>
     </Card>
   );

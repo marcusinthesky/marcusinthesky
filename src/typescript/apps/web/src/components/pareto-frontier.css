@@ -1,0 +1,39 @@
+/* Pareto frontier figure. Every animation fills `both` from a `from` keyframe, so the
+   unanimated state is the finished figure. */
+@theme {
+  --animate-pareto-frontier-pop: pareto-frontier-pop 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-pareto-frontier-fade: pareto-frontier-fade 600ms ease-out both;
+  --animate-pareto-frontier-draw: pareto-frontier-draw 1.2s cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-pareto-frontier-reveal: pareto-frontier-reveal 400ms ease-out both;
+
+  @keyframes pareto-frontier-pop {
+    from {
+      opacity: 0;
+      scale: 0;
+    }
+  }
+
+  @keyframes pareto-frontier-fade {
+    from {
+      fill: var(--color-foreground);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pareto-frontier-draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+  }
+
+  @keyframes pareto-frontier-reveal {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+.pareto-frontier-point {
+  transform-box: fill-box;
+  transform-origin: center;
+}

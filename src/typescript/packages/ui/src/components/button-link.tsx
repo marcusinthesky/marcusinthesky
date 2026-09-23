@@ -4,21 +4,17 @@ type ButtonLinkProps = ComponentPropsWithoutRef<"a"> & {
   variant?: "primary" | "secondary";
 };
 
-export function ButtonLink({
-  className = "",
-  style,
-  variant = "primary",
-  ...props
-}: ButtonLinkProps) {
-  const variantClass =
-    variant === "primary"
-      ? "border-primary bg-primary text-[oklch(0.99_0.005_80)] hover:opacity-90"
-      : "border-border bg-surface text-foreground hover:border-accent";
+const variants = {
+  primary:
+    "border-primary bg-primary text-primary-foreground hover:bg-transparent hover:text-foreground",
+  secondary:
+    "border-foreground bg-transparent text-foreground hover:bg-primary hover:text-primary-foreground",
+};
 
+export function ButtonLink({ className = "", variant = "primary", ...props }: ButtonLinkProps) {
   return (
     <a
-      className={`inline-flex min-h-11 items-center justify-center rounded-sm border px-4 py-2 font-mono text-xs uppercase tracking-[0.12em] no-underline transition-[border-color,opacity] ${variantClass} ${className}`}
-      style={variant === "primary" ? { color: "#fff", ...style } : style}
+      className={`inline-flex min-h-11 items-center justify-center rounded-sm border px-4 py-2 font-sans text-xs uppercase tracking-[0.12em] no-underline transition-colors duration-300 ${variants[variant]} ${className}`}
       {...props}
     />
   );

@@ -4,6 +4,7 @@ import { profile } from "@marcusinthesky/content";
 import { ButtonLink, Card } from "@marcusinthesky/ui";
 
 import { PageHero } from "@/components/page-hero";
+import { BrandIcon } from "@/components/brand-icon";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -29,7 +30,8 @@ export default function ContactPage() {
                 ? "Professional introductions and collaboration."
                 : "Open-source work, technical context, and repository discussions."}
             </p>
-            <ButtonLink className="mt-6" href={link.url}>
+            <ButtonLink className="mt-6 gap-2" href={link.url}>
+              <BrandIcon className="size-4" label={link.label} />
               Open {link.label}
             </ButtonLink>
           </Card>

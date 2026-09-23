@@ -60,7 +60,7 @@ await Bun.write(
 <rss version="2.0">
   <channel>
     <title>Marcus Gawronsky — Writing</title>
-    <link>${siteUrl}/writing/</link>
+    <link>${siteUrl}/blog/</link>
     <description>Selected technical and research writing by Marcus Gawronsky.</description>
     <language>en-ZA</language>
 ${rssItems}
@@ -75,7 +75,7 @@ await Bun.write(
     {
       version: "https://jsonfeed.org/version/1.1",
       title: "Marcus Gawronsky — Writing",
-      home_page_url: `${siteUrl}/writing/`,
+      home_page_url: `${siteUrl}/blog/`,
       feed_url: `${siteUrl}/feed.json`,
       authors: [{ name: profile.name, url: siteUrl }],
       items: orderedWriting.map((entry) => ({
@@ -114,7 +114,7 @@ await Bun.write(
 - [Research](${siteUrl}/research/)
 - [Publications](${siteUrl}/publications/)
 - [Projects](${siteUrl}/projects/)
-- [Writing](${siteUrl}/writing/)
+- [Blog](${siteUrl}/blog/)
 - [Public CV](${siteUrl}/cv/)
 
 ## Structured data

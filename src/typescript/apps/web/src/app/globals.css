@@ -1,4 +1,8 @@
 @import "@marcusinthesky/ui/styles/globals.css";
+@import "../components/monte-carlo-fan.css";
+@import "../components/kalman-filter.css";
+@import "../components/pareto-frontier.css";
+@import "../components/pca-cloud.css";
 
 .page-shell {
   width: min(calc(100% - 2rem), var(--content-width));
@@ -10,33 +14,133 @@
   margin-inline: auto;
 }
 
-.rule-grid {
-  background-image:
-    linear-gradient(
-      to right,
-      color-mix(in oklab, var(--border) 46%, transparent) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      color-mix(in oklab, var(--border) 35%, transparent) 1px,
-      transparent 1px
-    );
-  background-size: 3rem 3rem;
-  mask-image: linear-gradient(to bottom, black, transparent 92%);
+/* Section figures (figure-timeline.ts): unanimated, every figure shows its finished state. */
+@media (prefers-reduced-motion: reduce) {
+  .figure-step {
+    animation: none;
+  }
 }
 
-.enter {
-  animation: enter 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+/* Galton board (landing hero). */
+@theme {
+  --animate-galton-fall: galton-fall 2.3s cubic-bezier(0.45, 0, 0.55, 1) both;
+  --animate-galton-draw: galton-draw 1.2s cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-galton-settle: galton-settle 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-marquee: marquee 45s linear infinite;
+
+  @keyframes galton-fall {
+    from {
+      offset-distance: 0%;
+      opacity: 0;
+    }
+    6%,
+    88% {
+      opacity: 1;
+    }
+    to {
+      offset-distance: 100%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes galton-draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes galton-settle {
+    from {
+      opacity: 0;
+      scale: 0;
+    }
+  }
 }
 
-@keyframes enter {
-  from {
+.galton-board:has(.galton-pause:checked) .galton-motion,
+.galton-board:has(.galton-pause:checked) .galton-pause-label,
+.galton-board:has(.galton-pause:checked) .galton-replay {
+  animation-play-state: paused;
+}
+
+.galton-resume-copy,
+.galton-static-status {
+  display: none;
+}
+
+.galton-pause-label,
+.galton-replay,
+.galton-static-status {
+  grid-area: 1 / 1;
+}
+
+.galton-board:has(.galton-pause:checked) .galton-pause-copy {
+  display: none;
+}
+
+.galton-board:has(.galton-pause:checked) .galton-resume-copy {
+  display: inline;
+}
+
+.galton-pause:focus-visible + .galton-pause-label {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+}
+
+.galton-pause-label {
+  animation: galton-control-out 1ms linear 8.96s both;
+}
+
+.galton-replay {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  animation: galton-control-in 1ms linear both;
+}
+
+@keyframes galton-control-out {
+  to {
+    visibility: hidden;
+    pointer-events: none;
     opacity: 0;
-    transform: translateY(0.75rem);
+  }
+}
+
+@keyframes galton-control-in {
+  from {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
   }
   to {
+    visibility: visible;
+    pointer-events: auto;
     opacity: 1;
-    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galton-moving-ball,
+  .galton-pause-label,
+  .galton-replay {
+    display: none;
+  }
+
+  .galton-settled-ball,
+  .galton-motion {
+    animation: none;
+  }
+
+  .galton-static-status {
+    display: inline;
   }
 }

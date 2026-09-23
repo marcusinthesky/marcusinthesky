@@ -1,5 +1,7 @@
 import { profile } from "@marcusinthesky/content";
 
+import { BrandIcon } from "@/components/brand-icon";
+
 export function SiteFooter() {
   return (
     <footer className="mt-24 border-t border-border py-10">
@@ -9,11 +11,17 @@ export function SiteFooter() {
           <p className="mt-1">Cape Town · Research, data, and reliable software.</p>
         </div>
         <nav aria-label="External profiles">
-          <ul className="flex list-none flex-wrap gap-4 p-0 font-mono text-xs uppercase tracking-[0.1em]">
-            {profile.links.slice(0, 5).map((link) => (
+          <ul className="flex list-none flex-wrap gap-1 p-0">
+            {profile.links.map((link) => (
               <li key={link.url}>
-                <a href={link.url} rel="me noreferrer">
-                  {link.label}
+                <a
+                  aria-label={link.label}
+                  className="inline-flex size-11 items-center justify-center text-muted-foreground transition-[color,translate] duration-300 ease-out-expo hover:-translate-y-0.5 hover:text-foreground"
+                  href={link.url}
+                  rel="me noreferrer"
+                  title={link.label}
+                >
+                  <BrandIcon className="size-5" label={link.label} />
                 </a>
               </li>
             ))}

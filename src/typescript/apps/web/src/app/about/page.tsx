@@ -32,7 +32,7 @@ export default function AboutPage() {
         <div className="space-y-5">
           {experience.map((entry) => (
             <Card key={`${entry.organization}-${entry.period}`}>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] text-accent">
+              <p className="font-sans text-xs uppercase tracking-[0.12em] text-primary">
                 {entry.period}
               </p>
               <h3 className="mt-3 font-serif text-2xl">{entry.role}</h3>
@@ -54,7 +54,7 @@ export default function AboutPage() {
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {education.map((entry) => (
             <Card key={entry.qualification}>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] text-accent">
+              <p className="font-sans text-xs uppercase tracking-[0.12em] text-primary">
                 {entry.period}
               </p>
               <h3 className="mt-3 font-serif text-xl">{entry.qualification}</h3>

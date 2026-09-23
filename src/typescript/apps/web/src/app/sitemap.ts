@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/research/",
     "/publications/",
     "/projects/",
-    "/writing/",
+    "/blog/",
     "/cv/",
     "/contact/",
   ];

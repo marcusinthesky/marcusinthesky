@@ -7,7 +7,7 @@
         "http://127.0.0.1:3000/",
         "http://127.0.0.1:3000/publications/",
         "http://127.0.0.1:3000/projects/pricing-perspective/",
-        "http://127.0.0.1:3000/writing/",
+        "http://127.0.0.1:3000/blog/",
         "http://127.0.0.1:3000/cv/"
       ],
       "numberOfRuns": 3,

@@ -2,14 +2,12 @@
   <title id="title">Public GitHub activity for Marcus Gawronsky</title>
   <desc id="description">Public repositories: 31; Stars received: 17; Followers: 50</desc>
   <style>
-    :root { --bg: #faf8f3; --border: #c2b5a8; --text: #251f1a; --muted: #6c625b; --accent: #975229; }
-    @media (prefers-color-scheme: dark) { :root { --bg: #1b1917; --border: #62594f; --text: #eee9df; --muted: #b8ada0; --accent: #d59a77; } }
-    svg:target { --bg: #1b1917; --border: #62594f; --text: #eee9df; --muted: #b8ada0; --accent: #d59a77; }
+    :root { --bg: #fcfcf9; --border: #cecec5; --text: #090909; --muted: #666660; }
     .frame { fill: var(--bg); stroke: var(--border); }
     text { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; fill: var(--text); }
-    .value { font-family: Georgia, serif; font-size: 28px; font-weight: 600; }
+    .value { font-family: ui-serif, Palatino, Georgia, serif; font-size: 28px; font-weight: 600; }
     .label { fill: var(--muted); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
-    .meta { fill: var(--accent); font-size: 11px; }
+    .meta { font-size: 11px; }
   </style>
   <rect class="frame" x="1" y="1" width="638" height="176" rx="8"/>
   <text class="meta" x="36" y="35">PUBLIC GITHUB ACTIVITY</text>

@@ -10,8 +10,8 @@ export default function OpenGraphImage() {
     <div
       style={{
         alignItems: "flex-end",
-        background: "#faf8f3",
-        color: "#251f1a",
+        background: "#f6f6f1",
+        color: "#090909",
         display: "flex",
         height: "100%",
         justifyContent: "space-between",
@@ -20,19 +20,19 @@ export default function OpenGraphImage() {
       }}
     >
       <div style={{ display: "flex", flexDirection: "column", maxWidth: "870px" }}>
-        <div style={{ color: "#975229", fontSize: "24px", letterSpacing: "0.12em" }}>
+        <div style={{ color: "#090909", fontSize: "24px", letterSpacing: "0.12em" }}>
           RESEARCH · DATA · SOFTWARE
         </div>
         <div style={{ fontSize: "78px", fontWeight: 700, lineHeight: 1.02, marginTop: "28px" }}>
           Ideas that survive contact with production.
         </div>
-        <div style={{ color: "#6c625b", fontSize: "28px", marginTop: "34px" }}>
+        <div style={{ color: "#666660", fontSize: "28px", marginTop: "34px" }}>
           Marcus Gawronsky · Cape Town
         </div>
       </div>
       <div
         style={{
-          border: "2px solid #975229",
+          border: "2px solid #090909",
           borderRadius: "999px",
           height: "92px",
           width: "92px",

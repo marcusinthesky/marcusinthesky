@@ -4,6 +4,7 @@ import { profile, projects, publications } from "@marcusinthesky/content";
 import { Badge, ButtonLink, Card } from "@marcusinthesky/ui";
 
 import { PageHero } from "@/components/page-hero";
+import { PcaCloud } from "@/components/pca-cloud";
 import { PublicationCard } from "@/components/publication-card";
 
 export const metadata: Metadata = {
@@ -20,6 +21,10 @@ export default function ResearchPage() {
         description="My current programme studies what probability-valued information can reveal about firms, dependence, spatial interaction, and portfolio risk."
         eyebrow="Research"
         title="Distributional information as financial structure"
+        figure={{
+          caption: "Many observed dimensions → few principal directions",
+          content: <PcaCloud />,
+        }}
       />
       <section className="grid gap-5 border-t border-border py-14 md:grid-cols-3">
         {[

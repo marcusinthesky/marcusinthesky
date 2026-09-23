@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { projects } from "@marcusinthesky/content";
 
 import { PageHero } from "@/components/page-hero";
+import { ParetoFrontier } from "@/components/pareto-frontier";
 import { ProjectCard } from "@/components/project-card";
 
 export const metadata: Metadata = {
@@ -18,6 +19,10 @@ export default function ProjectsPage() {
         description="Public work selected for the strength of its question, evidence, architecture, or explanatory surface—not for repository count."
         eyebrow="Projects"
         title="Research and software as durable systems"
+        figure={{
+          caption: "Candidate decisions → the non-dominated frontier → a choice",
+          content: <ParetoFrontier />,
+        }}
       />
       <section className="grid gap-5 border-t border-border py-14 md:grid-cols-2">
         {projects.map((project) => (

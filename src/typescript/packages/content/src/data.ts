@@ -33,7 +33,6 @@ export const profile = profileSchema.parse({
     },
     { label: "Hugging Face", url: "https://huggingface.co/marcusinthesky" },
     { label: "Kaggle", url: "https://www.kaggle.com/marcusgawronsky" },
-    { label: "Zindi", url: "https://zindi.africa/users/marcusinthesky" },
   ],
 });
 
@@ -101,7 +100,7 @@ export const projects = projectSchema.array().parse([
     technologies: ["Python", "Lean 4", "LaTeX", "Next.js", "Nix", "DVC"],
     featured: true,
     links: [
-      { label: "Website", url: "https://marcusinthesky.github.io/pricing-perspective/" },
+      { label: "Website", url: "https://marcusinthesky.github.io/PricingPerspective/" },
       { label: "GitHub", url: "https://github.com/marcusinthesky/PricingPerspective" },
     ],
   },
@@ -153,7 +152,7 @@ export const writing = writingSchema.array().parse([
     source: "Pricing Perspective",
     publishedAt: "2026-09-05",
     canonicalUrl:
-      "https://marcusinthesky.github.io/pricing-perspective/blog/reproducibility-is-a-graph/",
+      "https://marcusinthesky.github.io/PricingPerspective/blog/reproducibility-is-a-graph/",
     local: false,
   },
   {
@@ -164,7 +163,7 @@ export const writing = writingSchema.array().parse([
     source: "Pricing Perspective",
     publishedAt: "2026-09-04",
     canonicalUrl:
-      "https://marcusinthesky.github.io/pricing-perspective/blog/tidal-wave-of-ai-research-in-finance/",
+      "https://marcusinthesky.github.io/PricingPerspective/blog/tidal-wave-of-ai-research-in-finance/",
     local: false,
   },
   {
@@ -175,7 +174,7 @@ export const writing = writingSchema.array().parse([
     source: "Pricing Perspective",
     publishedAt: "2026-09-03",
     canonicalUrl:
-      "https://marcusinthesky.github.io/pricing-perspective/blog/vintage-reproducible-ettax-models/",
+      "https://marcusinthesky.github.io/PricingPerspective/blog/vintage-reproducible-ettax-models/",
     local: false,
   },
   {

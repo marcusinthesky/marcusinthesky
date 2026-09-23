@@ -3,7 +3,7 @@ import type { ComponentPropsWithoutRef } from "react";
 export function Card({ className = "", ...props }: ComponentPropsWithoutRef<"article">) {
   return (
     <article
-      className={`rounded-md border border-border bg-surface p-6 shadow-[0_18px_60px_-48px_color-mix(in_oklab,var(--foreground)_55%,transparent)] backdrop-blur-sm ${className}`}
+      className={`group reveal relative rounded-md border border-border bg-card p-6 text-card-foreground transition-[translate,border-color] duration-500 ease-out-expo hover:-translate-y-1 hover:border-foreground ${className}`}
       {...props}
     />
   );

@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Applied AI, decision science, quantitative research, and reliable software.",
     start_url: "/",
     display: "standalone",
-    background_color: "#faf8f3",
-    theme_color: "#faf8f3",
+    background_color: "#f6f6f1",
+    theme_color: "#f6f6f1",
     icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }],
   };
 }

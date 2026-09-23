@@ -1,0 +1,60 @@
+/*
+ * Motion: tokens and utilities, CSS only. Every effect is disabled under
+ * prefers-reduced-motion, and browsers without scroll timelines show content
+ * immediately.
+ */
+@theme {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-rise: rise 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
+    }
+  }
+}
+
+/*
+ * Wipes and rises into place as the element scrolls into view. Clip-path rather
+ * than opacity, so text never renders at reduced contrast mid-animation.
+ */
+@keyframes reveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(2rem);
+  }
+  to {
+    clip-path: inset(0);
+    transform: none;
+  }
+}
+
+@utility reveal {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+  }
+}
+
+/* A hairline underline that draws in on hover and focus. */
+@utility underline-draw {
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
+  text-decoration: none;
+  transition: background-size 450ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* Native cross-document page transitions (the exported pages ship no router). */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}

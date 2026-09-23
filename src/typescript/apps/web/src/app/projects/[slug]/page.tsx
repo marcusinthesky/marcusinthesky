@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { projects } from "@marcusinthesky/content";
 import { Badge, ButtonLink } from "@marcusinthesky/ui";
 
+import { BrandIcon } from "@/components/brand-icon";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 
@@ -61,8 +62,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <ButtonLink
               href={link.url}
               key={link.url}
+              className="gap-2"
               variant={index === 0 ? "primary" : "secondary"}
             >
+              <BrandIcon className="size-4" label={link.label} />
               {link.label}
             </ButtonLink>
           ))}
