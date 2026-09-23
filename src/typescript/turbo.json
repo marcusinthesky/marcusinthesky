@@ -1,0 +1,17 @@
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "globalDependencies": ["bun.lock", "tsconfig.base.json"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "env": ["NEXT_PUBLIC_SITE_URL"],
+      "outputs": [".next/**", "!.next/cache/**", "out/**"]
+    },
+    "dev": { "cache": false, "persistent": true },
+    "lint": {},
+    "typecheck": {},
+    "test": { "env": ["PLAYWRIGHT_EXECUTABLE_PATH"] },
+    "storybook": { "cache": false, "persistent": true },
+    "build-storybook": { "outputs": ["storybook-static/**"] }
+  }
+}

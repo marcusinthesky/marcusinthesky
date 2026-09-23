@@ -1,0 +1,8 @@
+exclude = [
+  "http://localhost:*",
+  "https://www.linkedin.com/*",
+  "https://scholar.google.com/*",
+]
+max_retries = 2
+timeout = 20
+

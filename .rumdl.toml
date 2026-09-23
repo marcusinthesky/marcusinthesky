@@ -1,0 +1,2 @@
+[global]
+exclude = ["src/typescript/apps/web/.source/**"]

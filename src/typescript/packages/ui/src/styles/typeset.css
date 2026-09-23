@@ -1,0 +1,49 @@
+@layer components {
+  .typeset {
+    --typeset-size: 1.05rem;
+    --typeset-leading: 1.78;
+    --typeset-flow: 1.25em;
+    font-family: var(--font-body);
+    font-size: var(--typeset-size);
+    line-height: var(--typeset-leading);
+  }
+
+  .typeset > :where(* + *) {
+    margin-block-start: var(--typeset-flow);
+  }
+
+  .typeset :where(h1, h2, h3) {
+    color: var(--foreground);
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+  }
+
+  .typeset :where(h2) {
+    margin-block-start: calc(var(--typeset-flow) * 2.2);
+    font-size: 1.75em;
+  }
+
+  .typeset :where(h3) {
+    margin-block-start: calc(var(--typeset-flow) * 1.7);
+    font-size: 1.3em;
+  }
+
+  .typeset :where(a) {
+    color: var(--accent);
+    text-decoration-thickness: 1px;
+  }
+
+  .typeset :where(code) {
+    font-family: var(--font-code);
+    font-size: 0.9em;
+  }
+
+  .typeset :where(blockquote) {
+    border-inline-start: 2px solid var(--accent);
+    color: var(--muted-foreground);
+    margin-inline: 0;
+    padding-inline-start: 1.25rem;
+  }
+}
