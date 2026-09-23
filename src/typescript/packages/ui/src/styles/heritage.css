@@ -1,0 +1,223 @@
+/*
+ * Heritage motifs: see packages/ui/src/heritage.
+ *
+ * Parts carry geometry only. Colour comes from the --motif-* paint roles set on
+ * the .motif root by `data-tone`; motion is declared on parts with `data-verb`
+ * and triggered by the root's `data-motion`. Keyframes are `from`-only, so the
+ * finished artwork is the default state under reduced motion, in browsers
+ * without scroll timelines, and before any trigger fires.
+ */
+.motif {
+  --motif-ink: var(--foreground);
+  --motif-paper: var(--card);
+  --motif-lotus: var(--lotus-blue);
+  --motif-rose: var(--heritage-red);
+  --motif-leaf: var(--palm-green);
+  --motif-gold: var(--muted-gold);
+  --motif-silver: var(--muted);
+  --motif-skin: var(--heritage-skin);
+  --motif-metal: var(--foreground);
+  --motif-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motif-duration: 900ms;
+  --motif-stagger: 90ms;
+  overflow: visible;
+}
+
+/* Monochrome line art: every fill becomes paper, every line ink. */
+.motif[data-tone="ink"] {
+  --motif-lotus: var(--card);
+  --motif-rose: var(--card);
+  --motif-leaf: var(--foreground);
+  --motif-gold: var(--card);
+  --motif-silver: var(--card);
+  --motif-skin: var(--card);
+}
+
+.motif[data-tone="sacs"] {
+  --motif-ink: var(--sacs-navy);
+  --motif-lotus: var(--sacs-navy);
+  --motif-rose: var(--sacs-navy);
+  --motif-leaf: var(--sacs-navy);
+  --motif-gold: var(--sacs-gold);
+  --motif-silver: var(--card);
+  --motif-skin: var(--card);
+  --motif-metal: var(--sacs-navy);
+}
+
+.motif[data-tone="uct"] {
+  --motif-ink: var(--uct-azure);
+  --motif-lotus: var(--uct-azure);
+  --motif-rose: var(--uct-azure);
+  --motif-leaf: var(--uct-azure);
+  --motif-gold: var(--muted-gold);
+  --motif-silver: var(--card);
+  --motif-skin: var(--card);
+  --motif-metal: var(--muted-gold);
+}
+
+/* Verbs: each names its keyframes; transforms act on the element's own box. */
+.motif [data-verb] {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.motif [data-verb="draw"] {
+  --motif-keyframes: motif-draw;
+}
+.motif [data-verb="bloom"] {
+  --motif-keyframes: motif-bloom;
+  transform-origin: 50% 100%;
+}
+.motif [data-verb="slide"] {
+  --motif-keyframes: motif-slide;
+}
+.motif [data-verb="lift"] {
+  --motif-keyframes: motif-lift;
+}
+.motif [data-verb="unfurl"] {
+  --motif-keyframes: motif-unfurl;
+}
+.motif [data-verb="settle"] {
+  --motif-keyframes: motif-settle;
+}
+.motif [data-verb="open"] {
+  --motif-keyframes: motif-open;
+}
+.motif [data-verb="sway"] {
+  --motif-keyframes: motif-sway;
+  transform-origin: 80% 100%;
+}
+.motif [data-verb="sequence"] {
+  --motif-keyframes: motif-sequence;
+}
+
+@keyframes motif-draw {
+  from {
+    stroke-dashoffset: 1;
+    fill-opacity: 0;
+  }
+}
+@keyframes motif-bloom {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+@keyframes motif-slide {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+}
+@keyframes motif-lift {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+@keyframes motif-unfurl {
+  from {
+    clip-path: inset(0 50% 0 50%);
+  }
+}
+@keyframes motif-settle {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+@keyframes motif-open {
+  from {
+    opacity: 0;
+    transform: scaleX(0.15);
+  }
+}
+@keyframes motif-sway {
+  from {
+    transform: rotate(-2deg) translateY(6px);
+  }
+}
+@keyframes motif-sequence {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+@keyframes motif-draw-down {
+  from {
+    transform: scaleY(0);
+  }
+}
+@keyframes motif-thread {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* Hover colour feedback survives reduced motion; the scale does not. */
+.motif[data-motion="hover"] [data-verb="bloom"] {
+  transition: filter 200ms var(--motif-ease);
+}
+:is(.group:hover, .group:focus-within) .motif[data-motion="hover"] [data-verb="bloom"],
+.motif[data-motion="hover"]:hover [data-verb="bloom"] {
+  filter: saturate(1.3);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motif:is([data-motion="reveal"], [data-motion="scroll"], [data-motion="hover"])
+    [data-verb="draw"] {
+    stroke-dasharray: 1;
+  }
+
+  /* One-shot on load, time-based: for motifs above the fold. */
+  .motif[data-motion="reveal"] [data-verb] {
+    animation: var(--motif-keyframes) var(--motif-duration) var(--motif-ease) both;
+    animation-delay: calc(var(--motif-step, 0) * var(--motif-stagger));
+  }
+
+  /* Replays when the enclosing .group (or the motif) is hovered or focused. */
+  :is(.group:hover, .group:focus-within)
+    .motif[data-motion="hover"]
+    [data-verb]:not([data-verb="bloom"]),
+  .motif[data-motion="hover"]:hover [data-verb]:not([data-verb="bloom"]) {
+    animation: var(--motif-keyframes) 600ms var(--motif-ease) both;
+    animation-delay: calc(var(--motif-step, 0) * 60ms);
+  }
+  .motif[data-motion="hover"] [data-verb="bloom"] {
+    transition:
+      transform 200ms var(--motif-ease),
+      filter 200ms var(--motif-ease);
+  }
+  :is(.group:hover, .group:focus-within) .motif[data-motion="hover"] [data-verb="bloom"],
+  .motif[data-motion="hover"]:hover [data-verb="bloom"] {
+    transform: scale(1.04);
+  }
+
+  /* Scrubbed by the root's view timeline; each step starts a little later. */
+  @supports (animation-timeline: view()) {
+    .motif[data-motion="scroll"] {
+      view-timeline: --motif block;
+    }
+    .motif[data-motion="scroll"] [data-verb] {
+      animation: var(--motif-keyframes) linear both;
+      animation-timeline: --motif;
+      animation-range: entry calc(min(var(--motif-step, 0) * 6%, 60%)) cover
+        calc(min(var(--motif-step, 0) * 6%, 60%) + 35%);
+    }
+
+    /* A vertical hairline (e.g. the Timeline rule) that draws downward. */
+    .motif-draw-down {
+      transform-origin: top;
+      animation: motif-draw-down linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 60%;
+    }
+
+    /* The chapter thread (SectionHeading) pulled across its rule, shuttle-like. */
+    .motif-thread {
+      transform-origin: left;
+      animation: motif-thread linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
+  }
+}

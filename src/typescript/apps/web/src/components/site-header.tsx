@@ -1,11 +1,12 @@
 import { Menu, X } from "lucide-react";
+import { HeritageMark } from "@marcusinthesky/ui";
 import Link from "next/link";
 
 const navigation = [
   ["About", "/about/"],
   ["Research", "/research/"],
   ["Projects", "/projects/"],
-  ["Blog", "/blog/"],
+  ["Writing", "/blog/"],
   ["CV", "/cv/"],
 ] as const;
 
@@ -13,13 +14,18 @@ const navigation = [
 // Escape to close, and focus handling from the browser.
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border bg-background">
       <div className="page-shell flex min-h-16 items-center justify-between gap-6">
-        <Link className="font-serif text-lg font-medium no-underline" href="/">
+        <Link
+          className="flex shrink-0 items-center gap-2.5 font-serif text-sm font-medium uppercase tracking-[0.2em] no-underline"
+          href="/"
+        >
+          <HeritageMark motif="rook" size="sm" tone="ink" />
           Marcus Gawronsky
         </Link>
+        <span aria-hidden="true" className="hidden h-px flex-1 bg-border lg:block" />
         <nav aria-label="Primary" className="hidden sm:block">
-          <ul className="flex list-none items-center gap-6 p-0 font-sans text-[0.7rem] uppercase tracking-[0.14em]">
+          <ul className="flex list-none items-center gap-6 p-0 label-sm">
             {navigation.map(([label, href]) => (
               <li key={href}>
                 <Link className="underline-draw py-2" href={href}>
@@ -45,7 +51,10 @@ export function SiteHeader() {
         popover="auto"
       >
         <div className="page-shell flex min-h-16 items-center justify-between border-b border-border">
-          <span className="font-serif text-lg font-medium">Marcus Gawronsky</span>
+          <span className="flex items-center gap-2.5 font-serif text-sm font-medium uppercase tracking-[0.2em]">
+            <HeritageMark motif="rook" size="sm" tone="ink" />
+            Marcus Gawronsky
+          </span>
           <button
             aria-label="Close menu"
             className="-mr-2.5 inline-flex size-11 items-center justify-center"

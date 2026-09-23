@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Right palm branch</title>
+<desc id="desc">Stylised heraldic palm branch.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="palm-right" data-part="palm-right" transform="translate(256 0) scale(-1 1)" fill="none" stroke="#2F6B3A" stroke-linecap="round"><path d="M205 232C160 180 124 122 63 24" stroke-width="10"/><g stroke-width="8"><path d="M172 190L112 173M162 172L101 150M151 152L90 128M140 132L80 105M127 110L70 83M114 88L61 64M101 68L54 48M157 179L186 126M145 159L174 109M133 139L161 92M120 118L149 74M106 97L136 58M92 76L122 44"/></g></g>
+</svg>

@@ -16,9 +16,10 @@ export const metadata: Metadata = {
 
 export default function ResearchPage() {
   return (
-    <div className="page-shell">
+    <div className="page-shell" data-chapter="lotus">
       <PageHero
-        description="My current programme studies what probability-valued information can reveal about firms, dependence, spatial interaction, and portfolio risk."
+        motif="lotus"
+        description="Whether information encoded in language-model representations can be given useful mathematical structure—and whether that structure says something about dependence, interaction, and risk. The recurring objects are distributions, geometry, covariance, spatial interaction, and uncertainty."
         eyebrow="Research"
         title="Distributional information as financial structure"
         figure={{

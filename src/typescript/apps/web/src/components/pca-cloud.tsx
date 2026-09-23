@@ -98,7 +98,11 @@ export function PcaCloud() {
           {axes.flatMap(({ name, paths }, index) =>
             paths.map((d) => (
               <path
-                className="figure-step animate-pca-cloud-draw"
+                className={
+                  index === 0
+                    ? "figure-step animate-pca-cloud-draw stroke-data-estimate"
+                    : "figure-step animate-pca-cloud-draw"
+                }
                 d={d}
                 key={`${name}-${d}`}
                 pathLength={1}

@@ -23,12 +23,15 @@ export function ProjectCard({
       <Heading className="mt-6 font-serif text-3xl font-medium tracking-[-0.025em]">
         {project.title}
       </Heading>
+      {project.lede ? (
+        <p className="mt-3 font-serif text-lg leading-snug text-foreground">{project.lede}</p>
+      ) : null}
       <p className="mt-3 flex-1 text-muted-foreground">{project.summary}</p>
       <Link
-        className="mt-7 inline-flex min-h-11 items-center gap-2 self-start font-sans text-xs uppercase tracking-[0.12em] text-primary after:absolute after:inset-0"
+        className="mt-7 inline-flex min-h-11 items-center gap-2 self-start label-md text-primary after:absolute after:inset-0"
         href={`/projects/${project.slug}/`}
       >
-        <span className="underline-draw">Read case study</span> <NudgeArrow size={15} />
+        <span className="underline-draw">Read the case study</span> <NudgeArrow size={15} />
       </Link>
     </Card>
   );

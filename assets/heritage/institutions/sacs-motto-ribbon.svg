@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Spectemur Agendo ribbon</title>
+<desc id="desc">Original ribbon motif using the SACS motto and navy/gold palette.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<path d="M12 82Q128 42 244 82L226 164Q128 132 30 164Z" fill="#00174D" stroke="#D9AD2B" stroke-width="8"/><text x="128" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="700" letter-spacing="1.6" fill="#D9AD2B">SPECTEMUR AGENDO</text>
+</svg>

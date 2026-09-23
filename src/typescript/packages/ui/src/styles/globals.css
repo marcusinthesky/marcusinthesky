@@ -4,6 +4,7 @@
 @import "./theme.css";
 @import "./typeset.css";
 @import "./motion.css";
+@import "./heritage.css";
 
 /* Exposes the theme.css variables as Tailwind utilities (bg-card, text-primary, …). */
 @theme inline {
@@ -25,10 +26,35 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --color-heritage-red: var(--heritage-red);
+  --color-lotus-blue: var(--lotus-blue);
+  --color-palm-green: var(--palm-green);
+  --color-muted-gold: var(--muted-gold);
+  --color-sacs-navy: var(--sacs-navy);
+  --color-sacs-gold: var(--sacs-gold);
+  --color-uct-azure: var(--uct-azure);
+  --color-data-estimate: var(--data-estimate);
+  --color-data-decision: var(--data-decision);
+  --color-highlight: var(--highlight);
+
+  /* Resolved at the element, so it follows the nearest data-chapter ancestor. */
+  --color-chapter: var(--chapter);
+
+  /* Paint roles for heritage motifs; each .motif root sets them from its tone (heritage.css). */
+  --color-motif-ink: var(--motif-ink);
+  --color-motif-paper: var(--motif-paper);
+  --color-motif-lotus: var(--motif-lotus);
+  --color-motif-rose: var(--motif-rose);
+  --color-motif-leaf: var(--motif-leaf);
+  --color-motif-gold: var(--motif-gold);
+  --color-motif-silver: var(--motif-silver);
+  --color-motif-skin: var(--motif-skin);
+  --color-motif-metal: var(--motif-metal);
+
+  /* Square editorial geometry: 0 by default, 2px functional softening, 4px at most. */
+  --radius-*: initial;
+  --radius-sm: 2px;
+  --radius-md: 4px;
 }
 
 @layer base {
@@ -50,8 +76,8 @@
     min-height: 100vh;
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-serif);
-    line-height: 1.6;
+    font-family: var(--font-sans);
+    line-height: 1.65;
   }
 
   a {
@@ -59,14 +85,15 @@
     text-underline-offset: 0.2em;
   }
 
-  ::selection {
-    background: var(--primary);
-    color: var(--primary-foreground);
+  ::selection,
+  mark {
+    background: var(--highlight);
+    color: var(--foreground);
   }
 
   :focus-visible {
     outline: 2px solid var(--ring);
-    outline-offset: 4px;
+    outline-offset: 2px;
   }
 }
 

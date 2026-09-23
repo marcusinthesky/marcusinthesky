@@ -7,7 +7,7 @@ import { PageHero } from "@/components/page-hero";
 import { WritingCard } from "@/components/writing-card";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Writing",
   description: "Selected technical and research writing by Marcus Gawronsky.",
   alternates: { canonical: "/blog/" },
 };
@@ -15,11 +15,12 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   const orderedWriting = [...writing].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
   return (
-    <div className="page-shell">
+    <div className="page-shell" data-chapter="rose">
       <PageHero
-        description="A curated index of writing published across research projects, product work, and open technical communities. Links resolve to the original canonical publisher."
-        eyebrow="Blog"
-        title="Notes from research and production"
+        motif="rose"
+        description="The machinery around the research: reproducibility, computational provenance, research infrastructure, modelling choices, and the consequences of treating analysis as software. Some essays are published elsewhere; this site keeps a durable index."
+        eyebrow="Writing"
+        title="Working notes on research, software, and evidence"
         figure={{
           caption: "Noisy observations → a filtered estimate of the latent state",
           content: <KalmanFilter />,

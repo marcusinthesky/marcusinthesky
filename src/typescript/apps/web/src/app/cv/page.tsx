@@ -59,9 +59,7 @@ export default function CvPage() {
         <div className="space-y-5">
           {experience.map((entry) => (
             <Card key={`${entry.organization}-${entry.period}`}>
-              <p className="font-sans text-xs uppercase tracking-[0.12em] text-primary">
-                {entry.period}
-              </p>
+              <p className="label-md text-primary">{entry.period}</p>
               <h2 className="mt-3 font-serif text-2xl">{entry.role}</h2>
               <p className="mt-1 text-muted-foreground">{entry.organization}</p>
               <ul className="mt-5 space-y-2 pl-5 text-muted-foreground">

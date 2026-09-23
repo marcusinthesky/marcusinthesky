@@ -10,7 +10,7 @@ const appearances: Appearance[] = [
     href: "https://www.world-finance-conference.com/conference.php?id=34",
     // The symposium publishes no logo of its own; set in the WFC wordmark style.
     mark: (
-      <span className="font-sans text-[0.7rem] leading-tight font-medium tracking-[0.04em] uppercase">
+      <span className="label-sm leading-tight">
         World Finance &amp;
         <br />
         Banking
@@ -73,11 +73,8 @@ export function AppearingIn() {
   return (
     <section aria-labelledby="appearing-in-title" className="border-b border-border">
       <div className="page-shell grid items-center gap-4 py-6 md:grid-cols-[10rem_1fr] md:gap-8">
-        <h2
-          className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground"
-          id="appearing-in-title"
-        >
-          As appearing in
+        <h2 className="label-sm text-muted-foreground" id="appearing-in-title">
+          Published and presented through
         </h2>
         <div className="group overflow-hidden motion-safe:[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
           <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:w-auto motion-reduce:animate-none">

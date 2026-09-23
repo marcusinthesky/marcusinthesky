@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { education, experience, profile } from "@marcusinthesky/content";
-import { Badge, Card } from "@marcusinthesky/ui";
+import { Badge, Card, HeritageMark, MottoCallout, Timeline } from "@marcusinthesky/ui";
 
 import { PageHero } from "@/components/page-hero";
 
@@ -11,14 +11,47 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about/" },
 };
 
+function educationMotif(qualification: string) {
+  if (qualification.startsWith("PhD")) return "lamp" as const;
+  if (qualification.startsWith("MSc")) return "book" as const;
+  return "anchor" as const;
+}
+
+const principles = [
+  ["Mathematically explicit", "Assumptions stated, estimators defined, claims bounded."],
+  ["Computationally reproducible", "Every result traceable to its data, code, and environment."],
+  ["Empirically testable", "Claims exposed to data that could contradict them."],
+  ["Operationally useful", "Robust enough to run, inspect, and act on."],
+] as const;
+
 export default function AboutPage() {
   return (
-    <div className="page-shell">
+    <div className="page-shell" data-chapter="palm">
       <PageHero
-        description="A technology leader and quantitative researcher working across mathematical modelling, production machine learning, data systems, and reproducible evidence."
+        description="I work where mathematical research, computation, and real-world systems meet."
         eyebrow="About"
-        title="Research depth, production discipline"
+        title="Quantitative researcher. Research engineer. Technology leader."
       />
+
+      <section className="grid gap-10 border-t border-border py-14 lg:grid-cols-[0.72fr_1.28fr]">
+        <h2 className="font-serif text-3xl">How evidence is constructed</h2>
+        <div>
+          <p className="max-w-2xl text-lg text-muted-foreground">
+            My background spans quantitative research, financial technology, software engineering,
+            applied machine learning, and technical leadership. The thread connecting them is how
+            assumptions become models, models become software, software becomes results, and results
+            become decisions.
+          </p>
+          <dl className="mt-8 grid gap-6 border-t border-border pt-6 sm:grid-cols-2">
+            {principles.map(([term, detail]) => (
+              <div key={term}>
+                <dt className="label-md">{term}</dt>
+                <dd className="mt-2 text-muted-foreground">{detail}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
 
       <section className="grid gap-10 border-t border-border py-14 lg:grid-cols-[0.72fr_1.28fr]">
         <div>
@@ -32,9 +65,7 @@ export default function AboutPage() {
         <div className="space-y-5">
           {experience.map((entry) => (
             <Card key={`${entry.organization}-${entry.period}`}>
-              <p className="font-sans text-xs uppercase tracking-[0.12em] text-primary">
-                {entry.period}
-              </p>
+              <p className="label-md text-primary">{entry.period}</p>
               <h3 className="mt-3 font-serif text-2xl">{entry.role}</h3>
               <p className="mt-1 text-muted-foreground">
                 {entry.organization} · {entry.location}
@@ -49,21 +80,37 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-border py-14">
-        <h2 className="font-serif text-3xl">Education</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {education.map((entry) => (
-            <Card key={entry.qualification}>
-              <p className="font-sans text-xs uppercase tracking-[0.12em] text-primary">
-                {entry.period}
-              </p>
-              <h3 className="mt-3 font-serif text-xl">{entry.qualification}</h3>
-              <p className="mt-2 text-sm text-foreground">{entry.institution}</p>
-              <p className="mt-4 text-muted-foreground">{entry.summary}</p>
-            </Card>
-          ))}
+      <div aria-hidden="true" className="flex items-center gap-4 py-2">
+        <span className="h-px flex-1 bg-border" />
+        <HeritageMark motif="rose" size="sm" />
+        <span className="h-px flex-1 bg-border" />
+      </div>
+
+      <section className="grid gap-10 py-14 lg:grid-cols-[0.72fr_1.28fr]">
+        <div>
+          <h2 className="font-serif text-3xl">Education</h2>
+          <div className="mt-8">
+            <MottoCallout institution="uct" />
+          </div>
         </div>
+        <Timeline
+          items={education.map((entry) => ({
+            period: entry.period,
+            title: entry.qualification,
+            meta: entry.institution,
+            body: entry.summary,
+            motif: educationMotif(entry.qualification),
+          }))}
+        />
       </section>
+
+      <aside className="flex items-start gap-4 border-t border-border py-10 text-muted-foreground">
+        <HeritageMark motif="rook" size="sm" tone="ink" />
+        <p className="max-w-2xl text-sm leading-relaxed">
+          Gawroński is associated with <i lang="pl">gawron</i>, Polish for rook; the site&apos;s
+          mark is a name association, not a crest.
+        </p>
+      </aside>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Fraunces, Inter } from "next/font/google";
 
 import { profile } from "@marcusinthesky/content";
 
@@ -8,6 +9,15 @@ import { SiteHeader } from "@/components/site-header";
 import { absoluteUrl, site } from "@/lib/site";
 
 import "./globals.css";
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  axes: ["opsz"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -41,7 +51,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: "light",
-  themeColor: "#f6f6f1",
+  themeColor: "#f7f4ec",
 };
 
 const personJsonLd = {
@@ -59,7 +69,7 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-ZA">
+    <html className={`${fraunces.variable} ${inter.variable}`} lang="en-ZA">
       <body>
         <a
           className="sr-only fixed left-3 top-3 z-50 bg-background p-3 focus:not-sr-only"

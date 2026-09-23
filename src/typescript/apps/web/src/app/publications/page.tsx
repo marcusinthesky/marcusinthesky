@@ -27,9 +27,10 @@ export default function PublicationsPage() {
   }));
 
   return (
-    <div className="page-shell">
+    <div className="page-shell" data-chapter="lotus">
       <JsonLd data={structuredData} />
       <PageHero
+        motif="book"
         description="Canonical paper links and current manuscript status, backed by the same structured records used for machine-readable metadata."
         eyebrow="Publications"
         title="Research outputs"

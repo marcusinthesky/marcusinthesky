@@ -1,14 +1,29 @@
 import { profile } from "@marcusinthesky/content";
+import { HeritageMark, TableMountainLine } from "@marcusinthesky/ui";
 
 import { BrandIcon } from "@/components/brand-icon";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-border py-10">
-      <div className="page-shell flex flex-col gap-6 text-sm text-muted-foreground sm:flex-row sm:items-end sm:justify-between">
+    <footer className="mt-24 pb-10">
+      <div aria-hidden="true" className="page-shell flex items-end gap-4">
+        <span className="mb-px h-px flex-1 bg-border" />
+        <TableMountainLine className="w-56 sm:w-72" />
+        <span className="mb-px h-px flex-1 bg-border" />
+      </div>
+      <div className="page-shell mt-8 flex flex-col gap-6 text-sm text-muted-foreground sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="font-serif text-lg text-foreground">Marcus Gawronsky</p>
-          <p className="mt-1">Cape Town · Research, data, and reliable software.</p>
+          <p className="flex items-center gap-2.5 font-serif text-sm font-medium uppercase tracking-[0.2em] text-foreground">
+            <HeritageMark motif="rook" size="sm" tone="ink" />
+            Marcus Gawronsky
+          </p>
+          <p className="mt-2 label-sm tabular-nums">Cape Town · 33.9° S 18.4° E</p>
+          <p className="mt-4 font-serif text-sm italic text-muted-foreground">
+            <span lang="la" title="Knowledge · Hope · Practice">
+              Scientia · Spes · Praxis
+            </span>
+            <span className="sr-only"> (knowledge, hope, practice)</span>
+          </p>
         </div>
         <nav aria-label="External profiles">
           <ul className="flex list-none flex-wrap gap-1 p-0">

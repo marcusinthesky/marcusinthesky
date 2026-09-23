@@ -77,7 +77,7 @@ export function GaltonBoard() {
         </g>
 
         <path
-          className="galton-motion animate-galton-draw fill-none stroke-foreground"
+          className="galton-motion animate-galton-draw fill-none stroke-data-estimate"
           d={galtonNormalCurve}
           pathLength={1}
           strokeDasharray="1"

@@ -13,7 +13,7 @@ export const profile = profileSchema.parse({
   familyName: "Gawronsky",
   headline: "Applied AI, decision science, quantitative research, and reliable software",
   summary:
-    "I translate mathematical and computational research into production systems, reproducible evidence, and tools people can trust.",
+    "I turn mathematical and computational research into reproducible evidence, working systems, and tools that can be inspected, tested, and trusted.",
   location: "Cape Town, South Africa",
   roles: ["Technology leader", "Quantitative researcher", "Research software engineer"],
   interests: [
@@ -44,8 +44,9 @@ export const publications = publicationSchema.array().parse([
     authors: ["Marcus Gawronsky", "Chun-Sung Huang"],
     year: 2024,
     status: "Submitted / under review",
+    lede: "How much systematic covariance can be recovered from the geometry of probability-valued representations?",
     summary:
-      "Uses distributional geometry over language-model representations to study systematic covariance structure.",
+      "Uses Wasserstein geometry over language-model representations to study systematic covariance structure without treating text as a bag of features.",
     keywords: ["Wasserstein geometry", "representation learning", "covariance"],
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2410.23447" }],
   },
@@ -56,8 +57,9 @@ export const publications = publicationSchema.array().parse([
     authors: ["Marcus Gawronsky", "Chun-Sung Huang"],
     year: 2026,
     status: "Submitted / under review",
+    lede: "Can distributional similarity define economically meaningful interaction fields?",
     summary:
-      "Develops interaction fields that connect Wasserstein barycentres, textual representations, and spatial factor models.",
+      "Develops spatial factor structures from Wasserstein barycentres of textual representations, connecting distributional geometry with cross-sectional interaction.",
     keywords: ["spatial econometrics", "factor models", "optimal transport"],
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2608.21699" }],
   },
@@ -68,8 +70,9 @@ export const publications = publicationSchema.array().parse([
     authors: ["Marcus Gawronsky", "Chun-Sung Huang"],
     year: 2026,
     status: "Submitted / under review",
+    lede: "Can portfolio risk be bounded without estimating every cross-asset covariance directly?",
     summary:
-      "Studies information-derived portfolio risk bounds that do not require direct cross-asset covariance estimates.",
+      "Studies information-derived dependence structures and distributional fields as a route to portfolio-risk bounds under weaker covariance information.",
     keywords: ["portfolio risk", "distributional fields", "language models"],
     links: [{ label: "arXiv", url: "https://arxiv.org/abs/2608.21706" }],
   },
@@ -90,8 +93,9 @@ export const projects = projectSchema.array().parse([
   {
     slug: "pricing-perspective",
     title: "Pricing Perspective",
+    lede: "Can information extracted from language models become a measurable object in quantitative finance?",
     summary:
-      "A reproducible research programme connecting probability-valued firm information, asset co-movement, spatial interaction fields, and certified diversification bounds.",
+      "A reproducible research programme connecting probability-valued firm information, Wasserstein geometry, spatial interaction, asset co-movement, and portfolio risk—built with explicit provenance, tested pipelines, and machine-checked proofs.",
     narrative: [
       "Pricing Perspective co-locates research manuscripts, data pipelines, simulations, formal Lean proofs, and a static publication website so that claims and evidence evolve atomically.",
       "The public site presents three connected papers and their replication surface without placing notebooks, external APIs, or third-party scripts in the critical rendering path.",
@@ -107,8 +111,9 @@ export const projects = projectSchema.array().parse([
   {
     slug: "precarious-papers",
     title: "Precarious Papers",
+    lede: "What does the market learn from public financial-data breaches?",
     summary:
-      "A financial-econometrics investigation of public financial-data breaches, offshore entities, and market pricing.",
+      "An empirical investigation of offshore entities, leaked disclosures, network structure, and market pricing, combining event studies, graph theory, and reproducible analysis.",
     narrative: [
       "The project grew from the master's research programme and combines event-study design, graph structure, and reproducible analytical pipelines.",
     ],
@@ -120,8 +125,9 @@ export const projects = projectSchema.array().parse([
   {
     slug: "talks",
     title: "Talks",
+    lede: "Explaining technical ideas without flattening them.",
     summary:
-      "Presentations for industry and research audiences on machine learning, quantitative methods, and organisational strategy.",
+      "Presentations for research, industry, and leadership audiences on machine learning, quantitative methods, reproducibility, and organisational strategy.",
     narrative: [
       "A public archive of presentation material designed to make technical ideas legible beyond their original room.",
     ],
@@ -148,7 +154,7 @@ export const writing = writingSchema.array().parse([
     slug: "reproducibility-is-a-graph",
     title: "Reproducibility is a Graph",
     summary:
-      "Why research reproducibility is better understood as a dependency graph than as a folder of scripts.",
+      "A reproducible result is not a folder of code. It is a dependency structure connecting data, assumptions, transformations, software, environments, and outputs.",
     source: "Pricing Perspective",
     publishedAt: "2026-09-05",
     canonicalUrl:
@@ -159,7 +165,7 @@ export const writing = writingSchema.array().parse([
     slug: "tidal-wave-of-ai-research-in-finance",
     title: "The Tidal Wave of AI Research in Finance",
     summary:
-      "A research perspective on the scale, opportunities, and methodological risks of AI work in finance.",
+      "AI has expanded what can be measured in finance. It has also expanded the space of plausible-looking mistakes: a note on scale, validation, and methodological discipline.",
     source: "Pricing Perspective",
     publishedAt: "2026-09-04",
     canonicalUrl:
@@ -170,7 +176,7 @@ export const writing = writingSchema.array().parse([
     slug: "vintage-reproducible-ettax-models",
     title: "Vintage Reproducible ET Tax Models",
     summary:
-      "A note on preserving analytical vintages and making tax-model results reproducible over time.",
+      "Analytical results change when data, policy rules, assumptions, and software change. A practical note on preserving vintages so historical results stay reconstructable.",
     source: "Pricing Perspective",
     publishedAt: "2026-09-03",
     canonicalUrl:

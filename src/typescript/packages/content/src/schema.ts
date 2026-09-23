@@ -25,6 +25,8 @@ export const publicationSchema = z.object({
   authors: z.array(z.string().min(1)).min(1),
   year: z.number().int(),
   status: z.string().min(1),
+  /** The question the paper asks, in one sentence. */
+  lede: z.string().min(1).optional(),
   summary: z.string().min(1),
   keywords: z.array(z.string().min(1)),
   links: z.array(linkSchema).min(1),
@@ -33,6 +35,8 @@ export const publicationSchema = z.object({
 export const projectSchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]+$/),
   title: z.string().min(1),
+  /** The question or claim the project answers, in one sentence. */
+  lede: z.string().min(1).optional(),
   summary: z.string().min(1),
   narrative: z.array(z.string().min(1)).min(1),
   role: z.string().min(1),

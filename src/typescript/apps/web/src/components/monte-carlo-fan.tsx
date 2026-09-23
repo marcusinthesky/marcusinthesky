@@ -81,7 +81,7 @@ export function MonteCarloFan() {
         </g>
 
         <path
-          className="figure-step animate-monte-carlo-fan-draw fill-none stroke-foreground"
+          className="figure-step animate-monte-carlo-fan-draw fill-none stroke-data-estimate"
           d={medianLine}
           pathLength={1}
           strokeDasharray="1"

@@ -18,20 +18,23 @@ export function PublicationCard({
     <Card>
       <div className="flex flex-wrap items-center gap-3">
         <Badge>{publication.year}</Badge>
-        <span className="font-sans text-xs uppercase tracking-[0.1em] text-muted-foreground">
-          {publication.status}
-        </span>
+        <span className="label-md text-muted-foreground">{publication.status}</span>
       </div>
       <Heading className="mt-5 max-w-4xl font-serif text-2xl font-medium leading-snug">
         {publication.title}
       </Heading>
       <p className="mt-3 text-sm text-muted-foreground">{publication.authors.join(" · ")}</p>
-      <p className="mt-4 max-w-3xl text-muted-foreground">{publication.summary}</p>
+      {publication.lede ? (
+        <p className="mt-4 max-w-3xl font-serif text-lg leading-snug text-foreground">
+          {publication.lede}
+        </p>
+      ) : null}
+      <p className="mt-3 max-w-3xl text-muted-foreground">{publication.summary}</p>
       <div className="mt-6 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 border-t border-border pt-4">
         <div className="flex flex-wrap gap-4">
           {publication.links.map((link) => (
             <a
-              className="inline-flex min-h-11 items-center gap-2 font-sans text-xs uppercase tracking-[0.1em] text-primary"
+              className="inline-flex min-h-11 items-center gap-2 label-md text-primary"
               href={link.url}
               key={link.url}
               rel="noreferrer"

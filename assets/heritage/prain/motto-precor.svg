@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">PRECOR motto scroll</title>
+<desc id="desc">Gold heraldic scroll bearing PRECOR.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="motto-precor" data-part="motto"><path d="M18 94Q128 142 238 94L224 154Q128 190 32 154Z" fill="#D4B56A" stroke="#171717" stroke-width="4"/><text x="128" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="38" font-weight="700" letter-spacing="5" fill="#171717">PRECOR</text></g>
+</svg>

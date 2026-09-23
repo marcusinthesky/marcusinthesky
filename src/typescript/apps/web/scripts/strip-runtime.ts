@@ -43,7 +43,7 @@ async function removeFlightData(directory: string): Promise<number> {
 
 const staticAssets = join(out, "_next", "static");
 for (const entry of await readdir(staticAssets, { withFileTypes: true })) {
-  if (entry.name !== "css") {
+  if (entry.name !== "css" && entry.name !== "media") {
     await rm(join(staticAssets, entry.name), { force: true, recursive: true });
   }
 }

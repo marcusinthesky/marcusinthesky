@@ -53,7 +53,7 @@ export function KalmanFilter() {
       >
         <path className="fill-foreground stroke-none" d={kalmanBandPath} fillOpacity="0.08" />
         <path
-          className="fill-none stroke-foreground"
+          className="fill-none stroke-data-estimate"
           d={kalmanEstimatePath}
           strokeLinejoin="round"
           strokeWidth="1.25"

@@ -16,7 +16,8 @@ export const Composition: Story = {
     <div className="w-[min(44rem,90vw)] space-y-8 p-6">
       <SectionHeading
         eyebrow="Research system"
-        title="Ideas that survive contact with production"
+        index={1}
+        title="Research made operational"
         description="A small semantic layer designed for long-form research and engineering work."
       />
       <Card>
@@ -25,10 +26,62 @@ export const Composition: Story = {
         <p className="mt-3 text-muted-foreground">
           Reproducible quantitative research across software, evidence, and formal claims.
         </p>
-        <ButtonLink className="mt-6" href="#example">
-          Read the case study
-        </ButtonLink>
+        <div className="mt-6 flex flex-wrap items-center gap-4">
+          <ButtonLink arrow href="#example">
+            Read the case study
+          </ButtonLink>
+          <ButtonLink href="#example" variant="secondary">
+            Download CV
+          </ButtonLink>
+          <ButtonLink arrow href="#example" variant="text">
+            All writing
+          </ButtonLink>
+        </div>
       </Card>
+    </div>
+  ),
+};
+
+const chapters = [
+  ["ink", "Projects, CV, contact"],
+  ["lotus", "Research, publications"],
+  ["rose", "Writing"],
+  ["palm", "About, heritage"],
+] as const;
+
+/** One thread per chapter: the section rule, card top edge (hover/focus) and prose underlines. */
+export const Chapters: Story = {
+  render: () => (
+    <div className="grid w-[min(64rem,94vw)] gap-10 p-6 md:grid-cols-2">
+      {chapters.map(([chapter, use]) => (
+        <section className="space-y-6" data-chapter={chapter} key={chapter}>
+          <SectionHeading eyebrow={chapter} title={use} />
+          <Card>
+            <div className="typeset">
+              <p>
+                Ink text keeps its contrast; the <a href="#example">underline carries the thread</a>
+                . Hover or focus the card to see its top edge take the chapter colour.
+              </p>
+            </div>
+          </Card>
+        </section>
+      ))}
+    </div>
+  ),
+};
+
+export const Typography: Story = {
+  render: () => (
+    <div className="w-[min(56rem,90vw)] space-y-4 p-6">
+      <p className="label-lg">Label large</p>
+      <p className="label-md">Label medium</p>
+      <p className="label-sm">Label small</p>
+      <p className="font-serif text-display-xl">Display extra large</p>
+      <p className="font-serif text-display-lg">Display large</p>
+      <p className="font-serif text-headline-lg">Headline large</p>
+      <p className="font-serif text-headline-md">Headline medium</p>
+      <p className="font-serif text-headline-sm">Headline small</p>
+      <p className="metric-lg">1,024</p>
     </div>
   ),
 };

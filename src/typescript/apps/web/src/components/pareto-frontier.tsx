@@ -100,7 +100,7 @@ export function ParetoFrontier() {
 
       {chosen ? (
         <circle
-          className="figure-step pareto-frontier-point animate-pareto-frontier-pop fill-none stroke-primary"
+          className="figure-step pareto-frontier-point animate-pareto-frontier-pop fill-none stroke-data-decision"
           cx={chosen.x.toFixed(1)}
           cy={chosen.y.toFixed(1)}
           r="7"

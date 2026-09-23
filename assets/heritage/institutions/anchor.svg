@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Anchor</title>
+<desc id="desc">Reusable anchor motif.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="anchor" data-part="anchor" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><circle cx="128" cy="42" r="24"/><path d="M128 66V196M76 100H180M58 163C66 206 91 224 128 224C165 224 190 206 198 163M58 163L38 183M198 163L218 183"/></g>
+</svg>

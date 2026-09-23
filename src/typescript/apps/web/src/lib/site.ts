@@ -1,7 +1,8 @@
 export const site = {
   name: "Marcus Gawronsky",
-  title: "Marcus Gawronsky — Applied AI, decision science, and quantitative research",
-  description: "Research, engineering, writing, and reproducible software by Marcus Gawronsky.",
+  title: "Marcus Gawronsky — Research made operational",
+  description:
+    "Quantitative research, applied AI, and research engineering by Marcus Gawronsky: reproducible evidence, working systems, and tools that can be inspected, tested, and trusted.",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://marcusinthesky.github.io").replace(/\/$/, ""),
 } as const;
 

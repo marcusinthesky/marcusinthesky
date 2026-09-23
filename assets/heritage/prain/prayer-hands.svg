@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Prayer hands</title>
+<desc id="desc">Stylised paired hands in an attitude of prayer.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="prayer-hands" data-part="prayer-hands" fill="#E8B78F" stroke="#171717" stroke-width="4" stroke-linejoin="round"><path d="M106 224C94 198 88 165 90 132L96 52Q98 36 109 38L112 111L118 27Q120 12 131 19L130 114L128 22Q128 10 139 18L139 115L145 44Q147 30 157 35L154 131C153 168 149 198 145 224Z"/><path d="M150 224C162 198 168 165 166 132L160 52Q158 36 147 38L144 111L138 27Q136 12 125 19L126 114L128 22Q128 10 117 18L117 115L111 44Q109 30 99 35L102 131C103 168 107 198 111 224Z"/></g>
+</svg>

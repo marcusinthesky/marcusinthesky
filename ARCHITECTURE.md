@@ -21,4 +21,4 @@ The public CV deliberately remains LaTeX-first. Its HTML representation is a cur
 
 ## Performance model
 
-Remote services are publishing inputs, not page-load dependencies. All routes export as files, system fonts avoid font downloads, content pages contain no authored client JavaScript, and optional heavy capabilities such as browser Python, TTS, search, and video platforms are deferred until real content requires them.
+Remote services are publishing inputs, not page-load dependencies. All routes export as files, two self-hosted variable font families (Fraunces, Inter) are served from the export via `next/font` with no third-party font requests, content pages contain no authored client JavaScript, and optional heavy capabilities such as browser Python, TTS, search, and video platforms are deferred until real content requires them.

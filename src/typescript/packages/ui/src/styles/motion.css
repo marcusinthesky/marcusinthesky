@@ -15,31 +15,6 @@
   }
 }
 
-/*
- * Wipes and rises into place as the element scrolls into view. Clip-path rather
- * than opacity, so text never renders at reduced contrast mid-animation.
- */
-@keyframes reveal {
-  from {
-    clip-path: inset(0 0 100% 0);
-    transform: translateY(2rem);
-  }
-  to {
-    clip-path: inset(0);
-    transform: none;
-  }
-}
-
-@utility reveal {
-  @media (prefers-reduced-motion: no-preference) {
-    @supports (animation-timeline: view()) {
-      animation: reveal linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 30%;
-    }
-  }
-}
-
 /* A hairline underline that draws in on hover and focus. */
 @utility underline-draw {
   background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
@@ -56,5 +31,16 @@
 @media (prefers-reduced-motion: no-preference) {
   @view-transition {
     navigation: auto;
+  }
+}
+
+/* Print is an archival surface: render every component in its finished state. */
+@media print {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
   }
 }
