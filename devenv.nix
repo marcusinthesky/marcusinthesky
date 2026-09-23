@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   name = "marcusinthesky-portfolio";
@@ -10,23 +15,29 @@
   };
 
   packages = with pkgs; [
-    chktex
     deadnix
     git
     jq
     just
     lychee
-    nixfmt-rfc-style
+    nixfmt
     poppler-utils
     prek
+    ripgrep
     rumdl
     statix
     tectonic
     tex-fmt
+    texlivePackages.chktex
     tombi
   ];
 
-  processes.web.exec = {
+  # Playwright's downloaded browsers cannot load their shared libraries on NixOS.
+  env = lib.optionalAttrs pkgs.stdenv.isLinux {
+    PLAYWRIGHT_EXECUTABLE_PATH = lib.getExe pkgs.chromium;
+  };
+
+  processes.web = {
     exec = "just dev";
     cwd = config.git.root;
   };

@@ -8,7 +8,7 @@ The Prain assets are original vector emblazonments based on the published descri
 - Crest: Two hands erect, couped at the wrist, palms inward in the attitude of prayer, between two branches of palm, all Proper.
 - Motto: PRECOR.
 
-Source: https://www.surreycc.gov.uk/__data/assets/pdf_file/0007/36439/Surrey-Coats-of-Arms-I-Z.pdf
+Source: <https://www.surreycc.gov.uk/__data/assets/pdf_file/0007/36439/Surrey-Coats-of-Arms-I-Z.pdf>
 
 The exact number and placement of flowers in `prain/shield.svg` is an artistic implementation of *semé* rather than a claim that the positions are fixed by the blazon.
 
@@ -17,15 +17,16 @@ The exact number and placement of flowers in `prain/shield.svg` is an artistic i
 `institutions/sacs-heraldic.svg` is an original vector rendering from the registered heraldic description, not a trace of the official school logo. The Bureau of Heraldry record describes an Azure shield with upright anchor, open book, mural crown and flaming double-handled antique lamp, Argent, with an enhanced chief; motto SPECTEMUR AGENDO.
 
 Sources:
-- https://www.nationalarchives.gov.za/search-the-collections/repository/2660/repository/2844
-- https://sacshigh.org.za/
-- https://sacsjunior.org.za/
+
+- <https://www.nationalarchives.gov.za/search-the-collections/repository/2660/repository/2844>
+- <https://sacshigh.org.za/>
+- <https://sacsjunior.org.za/>
 
 ## University of Cape Town
 
 `institutions/uct-heraldic.svg` is an original vector rendering from UCT's published blazon, not a trace of the University's official logo. UCT gives the State Herald description as: Party per fess wavy, Sable and Azure; an anchor ensigned by a mural crown Or and surmounted by an open book Argent thereon inscribed the words Spes Bona Sable; in chief a burning lamp Argent.
 
-Source: https://uct.ac.za/about-uct-history/coat-arms
+Source: <https://uct.ac.za/about-uct-history/coat-arms>
 
 ## Gawronsky
 

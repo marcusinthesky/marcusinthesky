@@ -8,7 +8,7 @@ const required = [
   "research/index.html",
   "publications/index.html",
   "projects/index.html",
-  "writing/index.html",
+  "blog/index.html",
   "cv/index.html",
   "contact/index.html",
   "data/profile.json",
