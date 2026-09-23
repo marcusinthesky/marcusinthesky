@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Table Mountain line</title>
+<desc id="desc">Etched line panorama of Devil's Peak, Table Mountain, Lion's Head and the Cape Town shore.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="table-mountain" data-part="cape-place" fill="none" stroke="#171717" stroke-linecap="round" stroke-linejoin="round">
+  <path id="mountain-outline" data-part="mountain-outline" d="M3 190C23 186 42 178 57 168C70 158 79 144 89 135L96 130L103 134L108 141L114 143L121 135L130 127H178L184 132L188 140L192 155L198 174C201 183 206 184 211 176L218 160L225 153L231 158C239 167 243 182 253 190" stroke-width="4"/>
+  <g id="mountain-engraving" data-part="mountain-engraving" stroke-width="1.4" opacity=".42">
+    <path d="M52 170C69 162 82 148 94 137C100 137 104 143 111 146"/><path d="M65 166C78 157 88 145 96 133"/><path d="M128 132C144 129 165 129 181 132"/><path d="M130 133C130 144 127 153 122 162"/><path d="M139 132C138 145 136 156 132 165"/><path d="M148 132C147 145 147 157 145 167"/><path d="M157 132C158 145 157 157 159 167"/><path d="M166 132C168 145 171 155 175 165"/><path d="M176 133C179 144 182 152 187 160"/><path d="M23 188C46 182 70 174 93 166C117 158 144 158 168 165C186 170 198 180 211 183C226 184 240 187 252 190"/><path d="M43 183C69 177 91 168 112 164C138 160 164 165 184 174"/><path d="M205 180C213 175 217 164 225 158"/>
+  </g>
+  <g id="cape-shore" data-part="cape-shore" stroke-width="1.2" opacity=".32">
+    <path d="M15 193H35V190H38V193H43V188H46V193H53V190H57V193H64V189H68V193H76V191H80V193H98M104 193H138M145 193H169V188H172V193H178V184H181V193H187V190H191V193H214M220 193H249"/><path d="M10 197C48 195 85 198 122 196C161 194 203 198 247 196"/><path d="M29 201H83M94 200H151M163 201H219"/>
+  </g>
+</g>
+</svg>

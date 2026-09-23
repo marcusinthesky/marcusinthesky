@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Rook motif</title>
+<desc id="desc">Original rook silhouette for Gawroński/Gawronsky surname storytelling.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="rook" data-part="rook" fill="#171717"><path d="M45 176C58 135 72 96 107 78C127 68 154 66 177 80C195 91 207 113 204 135C202 151 194 164 183 176L202 214L169 192C151 204 125 210 99 205C72 201 54 191 45 176Z"/><path d="M170 83L225 66L186 103Z"/><circle cx="176" cy="91" r="4" fill="#F7F4EC"/><path d="M92 204L78 232M112 207L112 234M74 233H91M105 234H122" fill="none" stroke="#171717" stroke-width="5" stroke-linecap="round"/></g>
+</svg>

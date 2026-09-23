@@ -1,0 +1,56 @@
+import { ImageResponse } from "next/og";
+
+export const alt = "Marcus Gawronsky — research made operational";
+export const size = { width: 1200, height: 630 };
+export const contentType = "image/png";
+export const dynamic = "force-static";
+
+const paper = "#F7F4EC";
+const ink = "#171717";
+const muted = "#5B5A55";
+const heritageRed = "#B52326";
+
+// The Rook part (packages/ui) with literal colours: the image renderer has no CSS.
+const rook = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><g><g fill="${ink}" stroke="${ink}" stroke-linejoin="round"><path d="M228 66C214 58 198 50 182 46C178 36 168 30 158 30C146 30 136 36 132 48C128 62 122 76 114 92C104 112 90 136 70 166L22 202C26 212 34 222 44 226L82 188C90 184 96 182 102 182L108 190L114 184L120 192L126 184L132 190L138 182L144 184C164 170 176 148 180 122C184 102 184 88 184 76C198 74 214 70 228 66Z" stroke-width="2"></path></g><path fill="${paper}" d="M150 72C148 100 134 128 112 150C98 164 84 176 62 188L70 166C90 136 104 112 114 92C122 78 134 68 150 72Z" fill-opacity="0.16"></path><path fill="${paper}" d="M180 46C186 50 192 56 196 62C192 66 188 70 184 74C180 66 178 56 180 46Z" fill-opacity="0.4"></path><g fill="none" stroke="${paper}" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.6" stroke-width="1.5"><path d="M100 134C92 148 82 162 70 176"></path><path d="M110 136C100 152 88 166 74 180"></path><path d="M120 138C110 154 96 168 80 180"></path><path d="M130 136C120 154 104 170 88 180"></path><path d="M134 82C130 88 126 90 120 90M144 80C142 88 138 92 132 94"></path><path d="M142 100C138 106 132 110 126 110M148 94C148 102 144 108 138 112"></path><path d="M136 118C132 124 126 128 120 128"></path><path d="M174 86C176 92 176 98 174 104M178 104C180 112 178 120 176 126M168 118C170 128 168 136 164 142M160 146C160 154 156 162 150 168"></path><path d="M58 186L30 208M66 192L38 216M74 198L50 220"></path><path d="M194 64C204 64 216 64 226 66"></path></g><circle fill="${paper}" cx="162" cy="50" r="5"></circle><circle fill="${ink}" cx="163" cy="50" r="2.5"></circle><g fill="none" stroke="${ink}" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"><path d="M116 188L110 226M110 226L94 230M110 226L128 228M110 226L120 236M134 186L140 224M140 224L126 228M140 224L160 224M140 224L154 234"></path></g><g fill="none" stroke="${ink}" stroke-linecap="round" stroke-width="1.5"><path d="M72 240C104 236 160 236 196 240M86 240L94 232M104 240L100 233M170 240L176 232M182 240L190 234M154 240L150 234" opacity="0.55"></path></g></g></svg>`;
+const rookSrc = `data:image/svg+xml,${encodeURIComponent(rook)}`;
+
+export default function OpenGraphImage() {
+  return new ImageResponse(
+    <div
+      style={{
+        background: paper,
+        color: ink,
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        width: "100%",
+      }}
+    >
+      <div style={{ background: heritageRed, display: "flex", height: "2px", width: "100%" }} />
+      <div
+        style={{
+          alignItems: "flex-end",
+          display: "flex",
+          flex: 1,
+          justifyContent: "space-between",
+          padding: "76px",
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "column", maxWidth: "870px" }}>
+          <div style={{ color: ink, fontSize: "24px", letterSpacing: "0.14em" }}>
+            QUANTITATIVE RESEARCH · APPLIED AI · RESEARCH ENGINEERING
+          </div>
+          <div style={{ fontSize: "78px", fontWeight: 400, lineHeight: 1.02, marginTop: "28px" }}>
+            Research made operational.
+          </div>
+          <div style={{ color: muted, fontSize: "28px", marginTop: "34px" }}>
+            Marcus Gawronsky · Cape Town
+          </div>
+        </div>
+        {/* oxlint-disable-next-line nextjs/no-img-element -- ImageResponse renders plain img only */}
+        <img alt="" height={140} src={rookSrc} width={140} />
+      </div>
+    </div>,
+    size,
+  );
+}

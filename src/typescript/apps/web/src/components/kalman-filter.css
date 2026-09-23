@@ -1,0 +1,33 @@
+/* Kalman filter figure (owned by kalman-filter.tsx). */
+@theme {
+  --animate-kalman-filter-reveal: kalman-filter-reveal 4s linear both;
+  --animate-kalman-filter-fade: kalman-filter-fade 600ms ease-out both;
+  --animate-kalman-filter-dot: kalman-filter-dot 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes kalman-filter-reveal {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes kalman-filter-fade {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes kalman-filter-dot {
+    from {
+      opacity: 0;
+      scale: 0;
+    }
+  }
+}
+
+.kalman-filter .animate-kalman-filter-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+}

@@ -1,0 +1,73 @@
+/*
+ * Site theme — the raw values of the design language. `DESIGN.md` at the
+ * repository root is the canonical contract; change it and this file together.
+ *
+ * The first block keeps the standard shadcn/ui variable names so components stay
+ * portable. The heritage and institutional palettes are intentionally scarce:
+ * most pages read as paper, ink, white and hairline grey. The site is light-only.
+ */
+:root {
+  --background: #f7f4ec;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #171717;
+  --primary-foreground: #f7f4ec;
+  --secondary: #f0eee7;
+  --secondary-foreground: #171717;
+  --muted: #f0eee7;
+  --muted-foreground: #5b5a55;
+  --accent: #f0eee7;
+  --accent-foreground: #171717;
+  --destructive: #9e2a2f;
+  --border: #c9c3b7;
+  --input: #c9c3b7;
+  --ring: #245fc7;
+
+  /* Heritage palette: motifs, rare emphasis and one highlighted series per chart. */
+  --heritage-red: #b52326;
+  --lotus-blue: #245fc7;
+  --palm-green: #2f6b3a;
+  --muted-gold: #d4b56a;
+  --heritage-skin: #e8b78f;
+
+  /* Institutional palette: education context only. */
+  --sacs-navy: #00174d;
+  --sacs-gold: #d9ad2b;
+  --uct-azure: #196fa8;
+
+  /* Chart roles: a colour means the same thing in every figure; data stays ink. */
+  --data-estimate: var(--lotus-blue);
+  --data-decision: var(--heritage-red);
+
+  /* The reader's highlighter: selection and <mark>. Ink on it is ~12.7:1. */
+  --highlight: color-mix(in srgb, var(--muted-gold) 45%, var(--background));
+
+  /* The chapter thread; ink unless an ancestor sets data-chapter (below). */
+  --chapter: var(--foreground);
+
+  /* Fraunces and Inter are self-hosted by the web app (next/font) as these variables. */
+  --font-serif: var(--font-fraunces, "Fraunces"), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter, "Inter"), Arial, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+/*
+ * Chapter colour: one thread per chapter, taken from its motif. It is consumed
+ * only by the section-rule thread, the card top edge on hover and prose link
+ * underlines; never by text fill, surfaces or charts.
+ */
+[data-chapter="ink"] {
+  --chapter: var(--foreground);
+}
+[data-chapter="lotus"] {
+  --chapter: var(--lotus-blue);
+}
+[data-chapter="rose"] {
+  --chapter: var(--heritage-red);
+}
+[data-chapter="palm"] {
+  --chapter: var(--palm-green);
+}

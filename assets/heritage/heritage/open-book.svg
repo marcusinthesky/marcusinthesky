@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Open book</title>
+<desc id="desc">Generic open book motif for learning, archives and scholarship.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="open-book" data-part="book" fill="#F7F4EC" stroke="#171717" stroke-width="4" stroke-linejoin="round"><path d="M24 62Q78 46 126 74V206Q80 178 24 194Z"/><path d="M232 62Q178 46 130 74V206Q176 178 232 194Z"/><path d="M128 76V205"/></g>
+</svg>

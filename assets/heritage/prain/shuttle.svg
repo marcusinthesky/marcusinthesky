@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Weaver's shuttle</title>
+<desc id="desc">Stylised silver weaver's shuttle.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="shuttle" data-part="shuttle"><path d="M24 128C45 91 80 78 128 78s83 13 104 50c-21 37-56 50-104 50S45 165 24 128Z" fill="#F0EEE7" stroke="#171717" stroke-width="5"/><path d="M69 128c15-15 34-21 59-21s44 6 59 21c-15 15-34 21-59 21s-44-6-59-21Z" fill="none" stroke="#171717" stroke-width="4"/><path d="M88 116v24m12-28v32m12-35v38m12-40v42m12-40v38m12-35v32m12-28v24" stroke="#171717" stroke-width="2"/></g>
+</svg>

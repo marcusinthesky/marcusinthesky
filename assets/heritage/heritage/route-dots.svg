@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Heritage route</title>
+<desc id="desc">Abstract dotted route for movement or lineage narratives.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="route-dots" data-part="route" fill="none" stroke="#171717" stroke-width="4" stroke-linecap="round"><path d="M24 194C58 150 58 95 96 91C136 88 131 142 170 132C202 124 202 78 232 58" stroke-dasharray="3 12"/><circle cx="24" cy="194" r="8" fill="#B52326" stroke="none"/><circle cx="232" cy="58" r="8" fill="#245FC7" stroke="none"/></g>
+</svg>

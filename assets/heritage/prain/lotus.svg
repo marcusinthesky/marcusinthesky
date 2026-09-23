@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Blue lotus</title>
+<desc id="desc">Stylised blue lotus charge.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="lotus" data-part="lotus" transform="translate(128 132)"><path d="M0 24C-16 6-18-22 0-48C18-22 16 6 0 24Z" fill="#245FC7" stroke="#171717" stroke-width="3"/><path d="M-4 24C-32 12-46-9-42-35C-16-29-2-9-4 24Z" fill="#245FC7" stroke="#171717" stroke-width="3"/><path d="M4 24C32 12 46-9 42-35C16-29 2-9 4 24Z" fill="#245FC7" stroke="#171717" stroke-width="3"/><path d="M-9 26C-43 28-62 13-66-11C-36-14-15-1-9 26Z" fill="#245FC7" stroke="#171717" stroke-width="3"/><path d="M9 26C43 28 62 13 66-11C36-14 15-1 9 26Z" fill="#245FC7" stroke="#171717" stroke-width="3"/><ellipse cx="0" cy="22" rx="17" ry="8" fill="#D4B56A" stroke="#171717" stroke-width="2"/></g>
+</svg>

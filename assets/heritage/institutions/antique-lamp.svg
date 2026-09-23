@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Antique lamp</title>
+<desc id="desc">Simplified double-handled antique lamp with flame.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="lamp" data-part="lamp" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M82 142H174L164 188H92Z"/><path d="M103 142C94 119 94 98 112 89H144C162 98 162 119 153 142"/><path d="M94 151Q66 140 64 116Q81 116 96 127M160 127Q175 116 192 116Q190 140 162 151"/><path d="M128 88C113 69 116 51 128 34C140 51 143 69 128 88Z" fill="currentColor" stroke="none"/></g>
+</svg>

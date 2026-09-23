@@ -1,0 +1,60 @@
+/* PCA cloud: points fade in, axes draw, the frame aligns PC1 horizontally, points project onto it.
+   Unanimated (reduced motion), it rests on the tilted cloud with both components labelled. */
+@theme {
+  --animate-pca-cloud-fade: pca-cloud-fade 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-pca-cloud-draw: pca-cloud-draw 900ms cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-pca-cloud-rotate: pca-cloud-rotate 1.4s cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-pca-cloud-counter-rotate: pca-cloud-counter-rotate 1.4s cubic-bezier(0.65, 0, 0.35, 1)
+    both;
+  --animate-pca-cloud-project: pca-cloud-project 1s cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-pca-cloud-ghost: pca-cloud-ghost 1s ease-out both;
+
+  @keyframes pca-cloud-fade {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes pca-cloud-draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+  }
+
+  @keyframes pca-cloud-rotate {
+    to {
+      rotate: var(--pca-cloud-angle);
+    }
+  }
+
+  @keyframes pca-cloud-counter-rotate {
+    to {
+      rotate: calc(-1 * var(--pca-cloud-angle));
+    }
+  }
+
+  @keyframes pca-cloud-project {
+    to {
+      translate: var(--pca-cloud-dx) var(--pca-cloud-dy);
+    }
+  }
+
+  @keyframes pca-cloud-ghost {
+    to {
+      opacity: 0.3;
+    }
+  }
+}
+
+.pca-cloud-frame {
+  transform-box: view-box;
+}
+
+.pca-cloud-label {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.pca-cloud-ghost {
+  opacity: 0;
+}

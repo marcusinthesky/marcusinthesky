@@ -1,0 +1,63 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt, a4paper]{awesome-cv}
+
+\fontdir[fonts/]
+\newcommand*{\sectiondir}{sections/}
+\colorlet{awesome}{awesome-red}
+
+\usepackage{import}
+
+\hypersetup{
+  pdftitle={Marcus Gawronsky - Public Curriculum Vitae},
+  pdfauthor={Marcus Gawronsky},
+  pdfsubject={Applied AI, decision science, quantitative research and
+  research software engineering},
+  pdfkeywords={applied AI, decision science, quantitative finance,
+  causal inference, research software}
+}
+
+\newcommand*{\cvprofile}[1]{%
+  \begin{center}
+    \begin{minipage}{0.97\textwidth}
+      \fontsize{9pt}{1.35em}\bodyfontlight\color{text}#1
+    \end{minipage}
+  \end{center}
+  \vspace{-1mm}
+}
+
+\name{Marcus}{Gawronsky}
+\address{Cape Town, South Africa}
+\linkedin{marcussky}
+\github{marcusinthesky}
+\homepage{orcid.org/0000-0003-0554-0850}
+\position{Applied AI \& Decision Science~~~·~~~Quantitative
+Research~~~·~~~Research Software}
+
+\makecvfooter
+{}
+{Public CV · marcusinthesky.github.io}
+{Page \thepage}
+
+\begin{document}
+\makecvheader
+
+\cvprofile{Applied AI and decision-science leader with experience
+  translating mathematical and computational research into production
+  systems, reproducible evidence and reliable software. Built and led
+  technical teams, scaled multimodal inference, designed large-scale
+  causal measurement, and developed a Finance PhD research programme
+  spanning information geometry, representation learning and
+quantitative finance.}
+
+\import{\sectiondir}{experience.tex}
+\import{\sectiondir}{skills.tex}
+\import{\sectiondir}{honors.tex}
+
+\newpage
+
+\import{\sectiondir}{publications.tex}
+\import{\sectiondir}{education.tex}
+\import{\sectiondir}{leadership.tex}
+\end{document}

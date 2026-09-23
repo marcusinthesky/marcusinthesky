@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Heraldic torse</title>
+<desc id="desc">Red and silver wreath or torse.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="torse" data-part="torse"><path d="M20 132c18-28 36-28 54 0s36 28 54 0s36-28 54 0s36 28 54 0" fill="none" stroke="#F0EEE7" stroke-width="30" stroke-linecap="round"/><path d="M20 132c18-28 36-28 54 0s36 28 54 0s36-28 54 0s36 28 54 0" fill="none" stroke="#B52326" stroke-width="16" stroke-dasharray="25 27" stroke-linecap="round"/></g>
+</svg>

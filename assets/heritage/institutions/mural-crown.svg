@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Mural crown</title>
+<desc id="desc">Simplified mural crown.</desc>
+<style>:root{--heritage-paper:#F7F4EC;--heritage-ink:#171717;--heritage-red:#B52326;--heritage-blue:#245FC7;--heritage-green:#2F6B3A;--heritage-gold:#D4B56A;--heritage-silver:#F0EEE7;--heritage-skin:#E8B78F;} .outline{stroke:#171717;stroke-linecap:round;stroke-linejoin:round}</style>
+<g id="mural-crown" data-part="mural-crown" fill="currentColor"><path d="M62 168V94H82V72H102V94H126V72H148V94H174V72H194V94H214V168Z"/><rect x="78" y="116" width="24" height="22" fill="#F7F4EC"/><rect x="118" y="116" width="24" height="22" fill="#F7F4EC"/><rect x="158" y="116" width="24" height="22" fill="#F7F4EC"/></g>
+</svg>

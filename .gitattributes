@@ -1,0 +1,37 @@
+# Keep source files reproducible across platforms.
+* text=auto eol=lf
+
+# Explicit source formats.
+*.css text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.mdx text eol=lf
+*.mjs text eol=lf
+*.nix text eol=lf
+*.sh text eol=lf
+*.tex text eol=lf
+*.toml text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+
+# Binary assets should not be diffed or normalised as text.
+*.gif binary
+*.jpeg binary
+*.jpg binary
+*.mp3 binary
+*.mp4 binary
+*.otf binary
+*.pdf binary
+*.png binary
+*.webm binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+
+# Generated projections and vendored fonts (GitHub Linguist).
+assets/github-stats.svg linguist-generated=true
+src/typescript/apps/web/public/cv/*.pdf linguist-generated=true
+src/latex/cv/fonts/** linguist-vendored=true

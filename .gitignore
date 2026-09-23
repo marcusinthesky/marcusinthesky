@@ -1,0 +1,36 @@
+# devenv / direnv
+.devenv/
+.direnv/
+.env.local
+
+# JavaScript / TypeScript dependencies and build state
+node_modules/
+.next/
+.source/
+.turbo/
+*.tsbuildinfo
+
+# Test, audit, and generated site output
+.lighthouseci/
+out/
+storybook-static/
+test-results/
+playwright-report/
+
+# Generated public projections; source content generates these at build time
+src/typescript/apps/web/public/data/
+src/typescript/apps/web/public/feed.json
+src/typescript/apps/web/public/feed.xml
+src/typescript/apps/web/public/humans.txt
+src/typescript/apps/web/public/llms.txt
+src/typescript/apps/web/public/llms-full.txt
+
+# Generated CV build directory (the public PDF projection remains tracked)
+src/latex/cv/build/
+
+# Local editor and operating-system files
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/

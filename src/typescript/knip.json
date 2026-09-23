@@ -1,0 +1,23 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "workspaces": {
+    "apps/web": {
+      "entry": [
+        "src/app/**/{page,layout,route,not-found,opengraph-image}.{ts,tsx}",
+        "scripts/*.ts"
+      ],
+      "project": ["src/**/*.{ts,tsx}", "*.{ts,mts}"],
+      "ignoreDependencies": ["tailwindcss"]
+    },
+    "packages/ui": {
+      "entry": ["src/index.ts", ".storybook/*.ts"],
+      "project": ["src/**/*.{ts,tsx}"],
+      "ignoreDependencies": ["@storybook/react"]
+    },
+    "packages/content": {
+      "entry": ["src/index.ts"],
+      "project": ["src/**/*.ts"]
+    }
+  },
+  "ignoreDependencies": ["oxlint", "oxlint-tsgolint"]
+}

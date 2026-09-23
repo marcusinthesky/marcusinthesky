@@ -1,0 +1,32 @@
+/* Monte Carlo fan chart (monte-carlo-fan.tsx). The unanimated state is the finished figure. */
+@theme {
+  --animate-monte-carlo-fan-draw: monte-carlo-fan-draw 1.4s cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-monte-carlo-fan-fade: monte-carlo-fan-fade 900ms ease-out both;
+  --animate-monte-carlo-fan-reveal: monte-carlo-fan-reveal 900ms ease-out both;
+
+  @keyframes monte-carlo-fan-draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes monte-carlo-fan-fade {
+    from {
+      opacity: 1;
+    }
+  }
+
+  @keyframes monte-carlo-fan-reveal {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+/* Paths rest faint behind the quantile summary once it arrives. */
+.monte-carlo-fan-walks {
+  opacity: 0.35;
+}

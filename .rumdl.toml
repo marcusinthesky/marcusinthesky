@@ -1,0 +1,8 @@
+[global]
+exclude = ["src/typescript/apps/web/.source/**"]
+# Prose is written one paragraph per line; editors soft-wrap it.
+disable = ["MD013"]
+
+[MD033]
+# README embeds the generated GitHub stats card and its caption.
+allowed-elements = ["img", "sub"]
