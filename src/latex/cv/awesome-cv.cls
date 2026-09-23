@@ -10,7 +10,7 @@
 %
 % Notes:
 % 1) This class file defines the structure and layout of the template file (cv.tex, resume.tex).
-% 2) It has been written in such a way that under most circumstances you 
+% 2) It has been written in such a way that under most circumstances you
 % should not need to edit it.
 %
 % Class license:
@@ -422,7 +422,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{isstart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{mailto:\@email}{\faEnvelope\ \@email}
@@ -432,7 +432,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{isstart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{http://\@homepage}{\faHome\ \@homepage}
@@ -442,7 +442,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{isstart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{https://github.com/\@github}{\faGithubSquare\ \@github}
@@ -452,17 +452,17 @@
         {
           \ifbool{isstart}
             {
-              \setbool{isstart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{https://kaggle.com/\@kaggle}{\faKaggle\ \@kaggle}
-        } 
+        }
       \ifthenelse{\isundefined{\@stackoverflowid}}
         {}
         {
           \ifbool{isstart}
             {
-              \setbool{isstart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\ \@stackoverflowname}
@@ -472,7 +472,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{isstart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\ \@linkedin}
@@ -482,7 +482,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{isstart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \href{https://twitter.com/\@twitter}{\faTwitter\ \@twitter}
@@ -492,7 +492,7 @@
         {
           \ifbool{isstart}
             {
-              \setbool{isstart}{false} 
+              \setbool{isstart}{false}
             }
             {\@headersocialsep}
           \faSkype\ \@skype
@@ -516,7 +516,7 @@
   }
   \fancyfoot[R]{
     \footerstyle{#3}
-  } 
+  }
 }
 
 % Define a section for CV
@@ -570,7 +570,7 @@
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{12.5cm} R{4.5cm}}
     \setlength\leftskip{0.2cm}
     \subentrytitlestyle{#2} & \ifthenelse{\equal{#1}{}}
-      {\subentrydatestyle{#3}}{} 
+      {\subentrydatestyle{#3}}{}
     \ifthenelse{\equal{#1}{}}
       {}
       {\subentrypositionstyle{#1} & \subentrydatestyle{#3} \\}
@@ -610,7 +610,7 @@
 % Define a line of cv information(skill)
 % Usage: \cvskill{<type>}{<skillset>}
 \newcommand*{\cvskill}[2]{
-	\skilltypestyle{#1} & \skillsetstyle{#2} 
+	\skilltypestyle{#1} & \skillsetstyle{#2}
   \\
 }
 
@@ -662,7 +662,7 @@
   \ifthenelse{\isundefined{\@lettertitle}}
     {}
     {\lettertitlestyle{\@lettertitle} \\}
-  \lettertextstyle{\@letteropening} 
+  \lettertextstyle{\@letteropening}
 }
 
 % Define a closing of the cover letter

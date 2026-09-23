@@ -52,7 +52,7 @@
   --motif-gold: var(--muted-gold);
   --motif-silver: var(--card);
   --motif-skin: var(--card);
-  --motif-metal: var(--muted-gold);
+  --motif-metal: var(--uct-azure);
 }
 
 /* Verbs: each names its keyframes; transforms act on the element's own box. */
@@ -85,6 +85,9 @@
 .motif [data-verb="sway"] {
   --motif-keyframes: motif-sway;
   transform-origin: 80% 100%;
+}
+.motif [data-verb="turn"] {
+  --motif-keyframes: motif-turn;
 }
 .motif [data-verb="sequence"] {
   --motif-keyframes: motif-sequence;
@@ -142,12 +145,42 @@
     transform: scale(0.4);
   }
 }
+@keyframes motif-turn {
+  from {
+    opacity: 0;
+    transform: rotate(-60deg) scale(0.4);
+  }
+}
 @keyframes motif-draw-down {
   from {
     transform: scaleY(0);
   }
 }
 @keyframes motif-thread {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes motif-presence {
+  0%,
+  84%,
+  100% {
+    opacity: 0;
+  }
+  22%,
+  70% {
+    opacity: 1;
+  }
+}
+
+/* MotifRule: two hairlines that grow outward from the motif between them. */
+.motif-rule-line[data-side="start"] {
+  transform-origin: right;
+}
+.motif-rule-line[data-side="end"] {
+  transform-origin: left;
+}
+@keyframes motif-rule {
   from {
     transform: scaleX(0);
   }
@@ -166,6 +199,10 @@
   .motif:is([data-motion="reveal"], [data-motion="scroll"], [data-motion="hover"])
     [data-verb="draw"] {
     stroke-dasharray: 1;
+  }
+
+  .motif-rule[data-motion="reveal"] .motif-rule-line {
+    animation: motif-rule 900ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
   }
 
   /* One-shot on load, time-based: for motifs above the fold. */
@@ -197,6 +234,11 @@
     .motif[data-motion="scroll"] {
       view-timeline: --motif block;
     }
+    .motif.specimen-motif[data-motion="scroll"] {
+      animation: motif-presence linear both;
+      animation-timeline: --motif;
+      animation-range: entry 0% exit 100%;
+    }
     .motif[data-motion="scroll"] [data-verb] {
       animation: var(--motif-keyframes) linear both;
       animation-timeline: --motif;
@@ -210,6 +252,15 @@
       animation: motif-draw-down linear both;
       animation-timeline: view();
       animation-range: entry 0% cover 60%;
+    }
+
+    .motif-rule[data-motion="scroll"] {
+      view-timeline: --motif-rule block;
+    }
+    .motif-rule[data-motion="scroll"] .motif-rule-line {
+      animation: motif-rule linear both;
+      animation-timeline: --motif-rule;
+      animation-range: entry 20% cover 50%;
     }
 
     /* The chapter thread (SectionHeading) pulled across its rule, shuttle-like. */

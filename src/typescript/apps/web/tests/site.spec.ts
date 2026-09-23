@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 
 const routes = [
   "/",
@@ -89,7 +89,7 @@ for (const [route, colour] of chapterThreads) {
 test("home sections take the thread of their chapter", async ({ page }) => {
   await page.goto("/");
   const thread = (chapter: string) =>
-    page.locator(`section[data-chapter="${chapter}"] [data-part="thread"]`);
+    page.locator(`section[data-chapter="${chapter}"] header [data-part="thread"]`);
   await expect(thread("lotus")).toHaveCSS("background-color", "rgb(36, 95, 199)");
   await expect(thread("rose")).toHaveCSS("background-color", "rgb(181, 35, 38)");
 });
@@ -104,6 +104,69 @@ test("section threads are static under reduced motion", async ({ page }) => {
   }
 });
 
+const navSections = [
+  ["/about/", "about", "rgb(47, 107, 58)"],
+  ["/research/", "research", "rgb(36, 95, 199)"],
+  ["/publications/", "research", "rgb(36, 95, 199)"],
+  ["/projects/", "projects", "rgb(23, 23, 23)"],
+  ["/blog/", "writing", "rgb(181, 35, 38)"],
+  ["/cv/", "cv", "rgb(23, 23, 23)"],
+] as const;
+
+/** The sections whose navigation thread is fully drawn. */
+const drawnThreads = (nav: Locator) =>
+  nav
+    .locator('[data-part="thread"]')
+    .evaluateAll((threads) =>
+      threads
+        .filter((thread) => getComputedStyle(thread).scale === "1")
+        .map((thread) => thread.closest("[data-nav]")?.getAttribute("data-nav")),
+    );
+
+for (const [route, section, colour] of navSections) {
+  test(`${route} draws the ${section} navigation thread`, async ({ page }) => {
+    await page.goto(route);
+    const nav = page.getByRole("navigation", { name: "Primary" });
+    const thread = nav.locator(`[data-nav="${section}"] [data-part="thread"]`);
+    await expect(thread).toHaveCSS("background-color", colour);
+    expect(await drawnThreads(nav)).toEqual([section]);
+  });
+}
+
+test("the home page has no current navigation section", async ({ page }) => {
+  await page.goto("/");
+  expect(await drawnThreads(page.getByRole("navigation", { name: "Primary" }))).toEqual([]);
+});
+
+test("navigation threads draw in on hover and keyboard focus", async ({ page }) => {
+  await page.goto("/research/");
+  const nav = page.getByRole("navigation", { name: "Primary" });
+  const thread = (section: string) => nav.locator(`[data-nav="${section}"] [data-part="thread"]`);
+
+  await nav.getByRole("link", { name: "Writing" }).hover();
+  await expect(thread("writing")).toHaveCSS("scale", "1");
+  await expect(thread("writing")).toHaveCSS("background-color", "rgb(181, 35, 38)");
+
+  await page.mouse.move(0, 400);
+  await nav.getByRole("link", { name: "Research" }).focus();
+  await page.keyboard.press("Shift+Tab");
+  await expect(nav.getByRole("link", { name: "About" })).toBeFocused();
+  await expect(thread("about")).toHaveCSS("scale", "1");
+});
+
+test("the mobile menu marks the current section", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto("/blog/");
+  await page.getByRole("button", { name: "Open menu" }).click();
+  const menu = page.getByRole("navigation", { name: "Menu" });
+  await expect(menu).toBeVisible();
+  await expect(menu.locator('[data-nav="writing"] [data-part="thread"]')).toHaveCSS(
+    "background-color",
+    "rgb(181, 35, 38)",
+  );
+  expect(await drawnThreads(menu)).toEqual(["writing"]);
+});
+
 test("the header rook is decorative", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator('header a[href="/"] svg')).toHaveAttribute("aria-hidden", "true");
@@ -113,4 +176,16 @@ test("headings use the self-hosted Fraunces family", async ({ page }) => {
   await page.goto("/");
   const family = await page.locator("h1").evaluate((node) => getComputedStyle(node).fontFamily);
   expect(family).toMatch(/Fraunces/);
+});
+
+test("heritage ornaments render finished under reduced motion", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/about/");
+  const animated = page.locator(
+    '[data-part="compass-star"] [data-verb], [data-part="seal"] [data-verb], .motif-rule-line',
+  );
+  await expect(animated.first()).toBeAttached();
+  for (const element of await animated.all()) {
+    await expect(element).toHaveCSS("animation-name", "none");
+  }
 });

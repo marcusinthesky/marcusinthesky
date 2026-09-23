@@ -27,7 +27,7 @@ export default function PublicationsPage() {
   }));
 
   return (
-    <div className="page-shell" data-chapter="lotus">
+    <div className="page-shell" data-chapter="lotus" data-nav="research">
       <JsonLd data={structuredData} />
       <PageHero
         motif="book"
@@ -35,6 +35,7 @@ export default function PublicationsPage() {
         eyebrow="Publications"
         title="Research outputs"
         figure={{
+          name: "Monte Carlo paths",
           caption: "Simulated paths → quantile bands → a risk summary",
           content: <MonteCarloFan />,
         }}

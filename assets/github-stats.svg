@@ -11,7 +11,7 @@
   </style>
   <rect class="frame" x="1" y="1" width="638" height="176" rx="8"/>
   <text class="meta" x="36" y="35">PUBLIC GITHUB ACTIVITY</text>
-  
+
         <g transform="translate(36 78)">
           <text class="value" y="0">31</text>
           <text class="label" y="28">Public repositories</text>

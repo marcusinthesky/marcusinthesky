@@ -1,5 +1,5 @@
 import type { Project } from "@marcusinthesky/content";
-import { Badge, Card } from "@marcusinthesky/ui";
+import { Card } from "@marcusinthesky/ui";
 
 import { NudgeArrow } from "@/components/nudge-arrow";
 import Link from "next/link";
@@ -14,13 +14,8 @@ export function ProjectCard({
   const Heading = headingLevel === 2 ? "h2" : "h3";
 
   return (
-    <Card className="flex h-full flex-col">
-      <div className="flex flex-wrap gap-2">
-        {project.technologies.slice(0, 4).map((technology) => (
-          <Badge key={technology}>{technology}</Badge>
-        ))}
-      </div>
-      <Heading className="mt-6 font-serif text-3xl font-medium tracking-[-0.025em]">
+    <Card caption={project.technologies.slice(0, 4).join(" · ")} className="h-full">
+      <Heading className="font-serif text-2xl font-medium tracking-[-0.02em]">
         {project.title}
       </Heading>
       {project.lede ? (

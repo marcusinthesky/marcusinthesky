@@ -2,12 +2,24 @@ import { Menu, X } from "lucide-react";
 import { HeritageMark } from "@marcusinthesky/ui";
 import Link from "next/link";
 
+// Each section carries its chapter colour. Pages declare the section they belong
+// to with data-nav, and site-header.css draws that item's thread (keep in step).
 const navigation = [
-  ["About", "/about/"],
-  ["Research", "/research/"],
-  ["Projects", "/projects/"],
-  ["Writing", "/blog/"],
-  ["CV", "/cv/"],
+  { label: "About", href: "/about/", section: "about", chapter: "palm" },
+  {
+    label: "Research",
+    href: "/research/",
+    section: "research",
+    chapter: "lotus",
+  },
+  {
+    label: "Projects",
+    href: "/projects/",
+    section: "projects",
+    chapter: "ink",
+  },
+  { label: "Writing", href: "/blog/", section: "writing", chapter: "rose" },
+  { label: "CV", href: "/cv/", section: "cv", chapter: "ink" },
 ] as const;
 
 // The mobile menu uses the native Popover API: no JavaScript, light dismiss,
@@ -24,12 +36,26 @@ export function SiteHeader() {
           Marcus Gawronsky
         </Link>
         <span aria-hidden="true" className="hidden h-px flex-1 bg-border lg:block" />
-        <nav aria-label="Primary" className="hidden sm:block">
-          <ul className="flex list-none items-center gap-6 p-0 label-sm">
-            {navigation.map(([label, href]) => (
-              <li key={href}>
-                <Link className="underline-draw py-2" href={href}>
+        {/* The compass star closes the rule where navigation begins. */}
+        <span aria-hidden="true" className="-mx-2 hidden lg:flex">
+          <HeritageMark motif="star" motion="reveal" size="sm" tone="ink" />
+        </span>
+        <nav aria-label="Primary" className="hidden sm:block" data-site-nav="primary">
+          <ul className="flex list-none items-center p-0 label-sm">
+            {navigation.map(({ chapter, href, label, section }) => (
+              <li
+                className="flex items-center"
+                data-chapter={chapter}
+                data-nav={section}
+                key={href}
+              >
+                <Link className="relative flex min-h-16 items-center no-underline" href={href}>
                   {label}
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 -bottom-px h-0.5 bg-chapter"
+                    data-part="thread"
+                  />
                 </Link>
               </li>
             ))}
@@ -65,15 +91,25 @@ export function SiteHeader() {
             <X aria-hidden="true" size={22} />
           </button>
         </div>
-        <nav aria-label="Menu" className="page-shell">
+        <nav aria-label="Menu" className="page-shell" data-site-nav="menu">
           <ul className="list-none p-0">
-            {navigation.map(([label, href]) => (
-              <li className="border-b border-border" key={href}>
+            {navigation.map(({ chapter, href, label, section }) => (
+              <li
+                className="relative border-b border-border"
+                data-chapter={chapter}
+                data-nav={section}
+                key={href}
+              >
                 <Link
                   className="flex min-h-16 items-center font-serif text-4xl tracking-[-0.03em] no-underline"
                   href={href}
                 >
                   {label}
+                  <span
+                    aria-hidden="true"
+                    className="absolute -bottom-px left-0 h-0.5 w-12 bg-chapter"
+                    data-part="thread"
+                  />
                 </Link>
               </li>
             ))}

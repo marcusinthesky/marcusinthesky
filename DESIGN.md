@@ -248,6 +248,16 @@ The visual language is **editorial scholarship meeting production engineering**:
 
 The experience should feel like a very good research monograph, an archival folio, and a modern engineering notebook occupying the same system. It must never feel like a generic SaaS landing page, a faux-medieval heraldry site, a luxury-brand pastiche, or an ornamental family-tree template.
 
+Above all it reads as a **naturalist's field notebook**, in the manner of Darwin's field guides. The work is observed, drawn, labelled and dated like specimens:
+
+- Fraunces for the written hand;
+- ink and watercolour tints on paper;
+- engraved plates with captions beneath them, giving Latin binomials where a motif has one;
+- mottos and taglines as marginal inscriptions;
+- place and coordinates as the locality of the entry.
+
+Keep it distinct from the owner's sibling sites. solenya.ai is **neo-brutalist**, and Pricing Perspective is **Swiss typographic**: modern, minimal, slightly warm. Neither sets the tone here. In particular, do not reuse Pricing Perspective's landing anatomy: tracked eyebrow, display headline, a stack of pill buttons, an "Ask AI" row and a line-art figure on the right.
+
 The core tension is deliberate:
 
 - **heritage / future**
@@ -450,13 +460,15 @@ A page or section declares its chapter with `data-chapter`, which sets the `--ch
 | About / heritage | `palm` | palm green; muted gold stays on mottos |
 | Projects, CV, contact, home default | `ink` (default) | ink |
 
-Chapter colour has exactly three consumers:
+Chapter colour has exactly five consumers:
 
 1. **the thread:** a 2px × 48px emphasised rule, drawn at the start of a `SectionHeading` rule and above a `PageHero` eyebrow;
-2. **the card top edge:** on hover or focus-within, while the other edges darken to ink;
-3. **prose link underlines:** the underline, never the link text.
+2. **the navigation thread:** each item in the header and the mobile menu carries its section's chapter; its thread sits on the rule beneath it, persistent for the current section and drawn in on hover or keyboard focus;
+3. **the card top edge:** on hover or focus-within, while the other edges darken to ink;
+4. **prose link underlines:** the underline, never the link text;
+5. **the button bottom edge:** primary and secondary buttons draw a 2px thread along their bottom edge on hover or keyboard focus.
 
-It is never used for text fill, surfaces, buttons, navigation items or charts. Keep at most one chapter colour in view at a time; on the home page, sections set their own chapter and are far enough apart to satisfy this. SACS and UCT colours are never chapter colours.
+It is never used for text fill (including navigation labels), surfaces (including button fills and chips) or charts. Keep at most one chapter colour in view at a time; on the home page, chapters are stacked far enough apart to satisfy this. SACS and UCT colours are never chapter colours.
 
 Keep the `theme.css` values rather than the colours drawn on the identity sheet (`assets/identity_system.png`), which is a mood board. The sheet's Cape blue `#5BC0EB` is 1.9:1 on paper, and its blue and green only just pass AA.
 
@@ -652,14 +664,18 @@ Rules are preferable to shadows and rounded containers.
 
 ### Homepage composition
 
-The homepage should read as one coherent editorial spread.
+The homepage reads as the opening spread of a field notebook, taken from the identity sheet (`assets/identity_system.png`): a ruled title block, then chapters of framed, captioned specimen plates. It must not share the landing-page anatomy of the sibling sites (see Design thesis).
 
-Desktop hero:
+Desktop composition:
 
-- left 55–60%: eyebrow, display statement, concise support copy, actions;
-- right 40–45%: research/data visual, restrained heritage composition, or a hybrid of both;
-- bottom band: roles, location, current themes or evidence-bearing metrics;
-- below: selected work, research, writing and a quieter heritage/education thread.
+- **title block:** three columns divided by vertical hairlines. The first holds the display statement with the practice line beneath it; the second the pull-quote "Ideas that survive contact with production."; the third a short serif statement with one primary action and one text link;
+- **plate row:** the Galton board framed as a specimen plate beside chapter 01, which is divided from it by a vertical hairline;
+- **evidence band:** where the work has been published and presented;
+- **chapters:** each chapter opens with its emblem plate, captioned like a field-guide plate: the motif's name, then its Latin binomial where it has one (lotus, *Nelumbo nucifera*; rose, *Rosa persica*).
+
+On narrow screens the columns stack in reading order and the vertical hairlines disappear.
+
+"Ask AI" belongs with the research it asks about, not in the hero.
 
 Do not put the full Prain arms, SACS arms and UCT arms simultaneously above the fold. One dominant visual idea is sufficient.
 
@@ -843,7 +859,7 @@ Generic icons should:
 
 ### Heraldic asset vocabulary
 
-Components live in `src/typescript/packages/ui/src/heritage/`: `parts/prain.tsx`, `parts/heritage.tsx`, `parts/institutions.tsx`, `heritage-mark.tsx`, `ornaments.tsx` and `motto-callout.tsx`. Original artwork lives in `assets/heritage/`; the file names below refer to it. Hex values shown in `assets/identity_system.png` are illustrative; the YAML front matter is normative.
+Components live in `src/typescript/packages/ui/src/heritage/`: `parts/prain.tsx`, `parts/heritage.tsx`, `parts/institutions.tsx`, `parts/patterns.tsx` (the compass star), `heritage-mark.tsx`, `ornaments.tsx` (rules, dividers, dot field, archival seal) and `motto-callout.tsx`. Original artwork lives in `assets/heritage/`; the file names below refer to it. Hex values shown in `assets/identity_system.png` are illustrative; the YAML front matter is normative.
 
 The canonical asset vocabulary includes:
 
@@ -911,15 +927,15 @@ Use four degrees of intensity:
 
 **Level 0 — Invisible heritage:** color, fine rules, typographic rhythm only.
 
-**Level 1 — Micro motif:** one lotus, shuttle, rook, anchor or book at 12–32px.
+**Level 1 — Micro motif:** one lotus, shuttle, rook, anchor, book or compass star at 12–32px.
 
-**Level 2 — Ornament:** divider, corner palm, dot field, archival seal or line illustration.
+**Level 2 — Ornament or emblem plate:** divider, corner palm, dot field, archival seal, line illustration, or one constituent motif at plate scale (roughly 120–320px) in full colour, framed and captioned.
 
 **Level 3 — Narrative composition:** multiple motifs in an About/Heritage or Education section.
 
 **Level 4 — Full arms:** rare, captioned, historically contextual.
 
-Most of the site should operate at Levels 0–1.
+Most of the site operates at Levels 0–1. The exception is one emblem plate per chapter: the home page chapters, and the About hero. Emblem plates are where the heraldic colour gets its mass. They show a single constituent motif, never a shield composition, and their caption names the motif and its source.
 
 ### Patterns
 
@@ -927,6 +943,7 @@ Use repeating patterns sparingly.
 
 - Rose/lotus scatter: low-density heritage panels, never behind dense text.
 - Dot field: computational/probabilistic texture, reveal sequences and chart-adjacent fields.
+- Compass star: a neutral orientation or chapter separator, never a claim of heraldic provenance.
 - Shuttle divider: engineering/project section rule.
 - Palm corner: page-edge ornament, not a frame around every card.
 
@@ -961,7 +978,7 @@ Site-specific narrative compositions can live in the application layer when they
 - uppercase tracked label;
 - no gradient;
 - optional right arrow;
-- hover may shift the arrow 2–4px or reveal a thin heritage-red/lotus-blue accent, but should not cause layout movement.
+- hover may shift the arrow 2–4px; hover and keyboard focus draw the chapter thread along the bottom edge (see Chapter colour), without layout movement.
 
 #### Secondary
 
@@ -991,11 +1008,14 @@ External links may use a small standard external-link icon. Do not use a rook, l
 Desktop navigation is a restrained horizontal list.
 
 - personal wordmark left;
-- primary sections right;
+- primary sections right, separated by dots (silent to screen readers);
+- the place line "Cape Town / 33.9° S 18.4° E" at the far right on wide screens, as on the identity sheet;
 - 1px bottom rule;
 - sticky behavior permitted if it does not obscure content;
-- active state uses underline/rule, not a pill;
+- active state uses underline/rule, not a pill: the current section's chapter thread sits on the header's bottom rule, and in the mobile menu at the start of its row's rule;
 - no mega-menu for a personal portfolio.
+
+The header is static and cannot know the route. Each page declares its section with `data-nav` on its root, and `site-header.css` matches it with `:has()`. Publications count as Research, and case studies count as Projects.
 
 Mobile navigation must be fully keyboard accessible and should use a simple disclosure/dialog pattern rather than animation-heavy navigation.
 
@@ -1014,11 +1034,12 @@ The visual may be a quantitative animation, a restrained heraldic composition, o
 
 ### Section headers
 
-Section headers use:
+Section headers follow the identity sheet's compartment label:
 
-- tracked label or ordinal;
-- short serif title where needed;
-- optional fine rule, beginning with the 2px chapter thread;
+- a 1px ink rule, beginning with the 2px chapter thread;
+- the ordinal and chapter name in `label-lg` spaced capitals ("02 / Selected work");
+- a short serif title at `headline-md`. Display sizes belong to the title block, so chapters do not compete with it;
+- optional short description;
 - optional single micro motif.
 
 “Selected work,” “Research,” “Writing,” “Heritage,” etc. should feel like chapters in one volume.
@@ -1039,6 +1060,12 @@ Default:
 - visible link affordance.
 
 Hover should be subtle: border darkening, 1–2px translation, underline change, or a small motif activation. Avoid scaling the entire card. On hover and focus-within, the top edge takes the chapter colour.
+
+Where a card has catalogue metadata (source and date, technology), it sits **beneath the frame** as a museum-label caption (`Card caption`), not as chips inside it.
+
+### Plates
+
+A plate (`Plate`) is a framed specimen on a white surface with its label **beneath** the frame: the name in `label-sm` spaced capitals, then one short serif italic line saying what it shows or where it comes from. Use plates for figures (the Galton board, section figures) and for emblem plates. Plates in a tile row stretch to the row's height and keep the specimen centred.
 
 ### Project cards
 
@@ -1079,7 +1106,7 @@ Metrics must be real and sourced from canonical site data. Static build-time val
 
 ### Chips
 
-Chips are square-ish, compact metadata devices, not decorative pills.
+Chips are square-ish, compact metadata devices, not decorative pills: silver paper with a hairline border, ink `label-sm` text, 2px radius. They are never filled with ink or a heritage colour; colour-coded tags would compete with chapter colour.
 
 Use for:
 
@@ -1112,9 +1139,9 @@ A motto callout is a quiet editorial device:
 
 Suggested API conceptually:
 
-- `motif`: `rook | lotus | rose | shuttle | palm | anchor | book | lamp | crown`;
+- `motif`: `rook | lotus | rose | shuttle | palm | anchor | book | lamp | crown | route | mountain | star`;
 - `tone`: `ink | heritage | sacs | uct`;
-- `size`: `sm | md | lg`;
+- `size`: `sm | md | lg | xl`;
 - `motion`: `none | reveal | hover | scroll`.
 
 The component must not silently combine unrelated lineages.
@@ -1143,6 +1170,7 @@ If official institutional logos are ever used, source them separately under the 
 Use:
 
 - plain hairline by default;
+- compass-star rule for a neutral chapter or orientation transition;
 - shuttle divider for engineering/making transitions;
 - micro lotus/rose separator for heritage;
 - dot field for computational/probability context.
@@ -1288,6 +1316,8 @@ Preferred easing for reveal/settle behavior: a strong ease-out such as `cubic-be
 - **rook:** one-time line draw or feather reveal;
 - **dot field:** sequential reveal suitable for probability/process explanation;
 - **anchor/book/lamp:** simple fade/draw in education context;
+- **compass star:** one quarter-turn settle; the hairlines of its rule grow outward from it;
+- **archival seal:** the rings draw, then the legend and the lotus appear;
 - **full arms:** optional one-time assembly in a dedicated heritage section, not on every page load.
 
 #### Scroll behavior

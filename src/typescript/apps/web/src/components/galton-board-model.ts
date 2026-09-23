@@ -1,7 +1,7 @@
 export const GALTON_ROWS = 10;
 export const GALTON_BALL_COUNT = 40;
 export const GALTON_DX = 30;
-export const GALTON_DY = 24;
+const GALTON_DY = 24;
 export const GALTON_FLOOR = 460;
 export const GALTON_STACK_STEP = 8;
 export const GALTON_APEX = { x: 200, y: 64 } as const;
@@ -24,7 +24,7 @@ export const binomialCoefficient = (n: number, k: number): number => {
   return value;
 };
 
-export const GALTON_MAX_BAR =
+const GALTON_MAX_BAR =
   (binomialCoefficient(GALTON_ROWS, GALTON_ROWS / 2) / 2 ** GALTON_ROWS) *
   GALTON_BALL_COUNT *
   GALTON_STACK_STEP;

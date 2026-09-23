@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className="mt-24 pb-10">
       <div aria-hidden="true" className="page-shell flex items-end gap-4">
         <span className="mb-px h-px flex-1 bg-border" />
-        <TableMountainLine className="w-56 sm:w-72" />
+        <TableMountainLine className="w-64 sm:w-80" />
         <span className="mb-px h-px flex-1 bg-border" />
       </div>
       <div className="page-shell mt-8 flex flex-col gap-6 text-sm text-muted-foreground sm:flex-row sm:items-end sm:justify-between">
@@ -17,7 +17,10 @@ export function SiteFooter() {
             <HeritageMark motif="rook" size="sm" tone="ink" />
             Marcus Gawronsky
           </p>
-          <p className="mt-2 label-sm tabular-nums">Cape Town · 33.9° S 18.4° E</p>
+          <p className="mt-2 flex items-center gap-2 label-sm tabular-nums">
+            <HeritageMark motif="star" size="sm" tone="ink" />
+            Cape Town · 33.9° S 18.4° E
+          </p>
           <p className="mt-4 font-serif text-sm italic text-muted-foreground">
             <span lang="la" title="Knowledge · Hope · Practice">
               Scientia · Spes · Praxis

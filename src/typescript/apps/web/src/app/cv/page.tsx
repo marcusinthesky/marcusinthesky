@@ -14,10 +14,11 @@ export const metadata: Metadata = {
 
 export default function CvPage() {
   return (
-    <div className="page-shell">
+    <div className="page-shell" data-nav="cv">
       <PageHero
         description="A public, privacy-safe account of experience, education, research, and technical practice. The HTML view is the accessible source; a typeset PDF is available for download."
         eyebrow="Curriculum vitae"
+        motif="book"
         title="Work across research and production"
       />
       <div className="border-t border-border py-10">

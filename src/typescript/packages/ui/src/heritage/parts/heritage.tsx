@@ -112,7 +112,12 @@ export function OpenBook({ className, step, transform }: PartProps) {
         </g>
         <g data-verb="open" style={{ ...stepStyle(base), transformOrigin: "100% 50%" }}>
           <path className="fill-motif-paper" d={LEFT_LEAF} strokeWidth={2.5} />
-          <path className="fill-motif-ink" d="M128 78C122 73 116 70 110 68V189C116 191 122 197 128 204Z" fillOpacity={0.06} stroke="none" />
+          <path
+            className="fill-motif-ink"
+            d="M128 78C122 73 116 70 110 68V189C116 191 122 197 128 204Z"
+            fillOpacity={0.06}
+            stroke="none"
+          />
           <g fill="none" strokeOpacity={0.55} strokeWidth={1.75}>
             {PAGE_LINES.map((line) => (
               <path d={line.left} key={line.left} />
@@ -121,7 +126,12 @@ export function OpenBook({ className, step, transform }: PartProps) {
         </g>
         <g data-verb="open" style={{ ...stepStyle(base + 1), transformOrigin: "0% 50%" }}>
           <path className="fill-motif-paper" d={RIGHT_LEAF} strokeWidth={2.5} />
-          <path className="fill-motif-ink" d="M128 78C134 73 140 70 146 68V189C140 191 134 197 128 204Z" fillOpacity={0.06} stroke="none" />
+          <path
+            className="fill-motif-ink"
+            d="M128 78C134 73 140 70 146 68V189C140 191 134 197 128 204Z"
+            fillOpacity={0.06}
+            stroke="none"
+          />
           <g fill="none" strokeOpacity={0.55} strokeWidth={1.75}>
             {PAGE_LINES.map((line) => (
               <path d={line.right} key={line.right} />
@@ -173,16 +183,40 @@ type TableMountainProps = PartProps & {
   nonScalingStroke?: boolean;
 };
 
-/** Devil's Peak, the flat table and Lion's Head as one ink line over the Atlantic. */
-const TABLE_MOUNTAIN =
-  "M2 196C20 191 34 184 44 175L56 162L62 151L66 147L72 155L80 150L88 141L94 137H176L182 143C188 155 194 166 202 172C208 176 212 176 216 170C220 161 226 155 232 157C238 159 240 167 242 175C246 185 250 191 254 196";
+/**
+ * A north-facing Table Bay panorama: Devil's Peak at left, the front table and
+ * its sandstone cliffs, then Lion's Head and Signal Hill at right.
+ */
+const TABLE_MOUNTAIN_OUTLINE =
+  "M3 190C23 186 42 178 57 168C70 158 79 144 89 135L96 130L103 134L108 141L114 143L121 135L130 127H178L184 132L188 140L192 155L198 174C201 183 206 184 211 176L218 160L225 153L231 158C239 167 243 182 253 190";
+
+const TABLE_MOUNTAIN_ENGRAVING = [
+  "M52 170C69 162 82 148 94 137C100 137 104 143 111 146",
+  "M65 166C78 157 88 145 96 133",
+  "M128 132C144 129 165 129 181 132",
+  "M130 133C130 144 127 153 122 162",
+  "M139 132C138 145 136 156 132 165",
+  "M148 132C147 145 147 157 145 167",
+  "M157 132C158 145 157 157 159 167",
+  "M166 132C168 145 171 155 175 165",
+  "M176 133C179 144 182 152 187 160",
+  "M23 188C46 182 70 174 93 166C117 158 144 158 168 165C186 170 198 180 211 183C226 184 240 187 252 190",
+  "M43 183C69 177 91 168 112 164C138 160 164 165 184 174",
+  "M205 180C213 175 217 164 225 158",
+] as const;
+
+const CAPE_SHORE = [
+  "M15 193H35V190H38V193H43V188H46V193H53V190H57V193H64V189H68V193H76V191H80V193H98M104 193H138M145 193H169V188H172V193H178V184H181V193H187V190H191V193H214M220 193H249",
+  "M10 197C48 195 85 198 122 196C161 194 203 198 247 196",
+  "M29 201H83M94 200H151M163 201H219",
+] as const;
 
 /**
  * Table Mountain line: Cape Town grounding, line-based and subordinate.
  *
  * Stretched with `nonScalingStroke`, Chromium resolves dashes in screen pixels
  * but `pathLength` in user units, so a dash-drawn line fragments. The stretched
- * form therefore unfurls (a clip reveal) instead of drawing with dashes.
+ * form therefore unfurls as one etched plate instead of drawing with dashes.
  * As a footer rule it may sit at the very end of the page, where the shared
  * scroll range never completes, so it finishes once it has fully entered.
  */
@@ -200,18 +234,46 @@ export function TableMountain({
       style={stepStyle(step)}
       transform={transform}
     >
-      <g className="stroke-motif-ink" strokeLinecap="round" strokeLinejoin="round">
-        {nonScalingStroke ? (
-          <path
-            className="[animation-range:entry_0%_entry_100%]!"
-            d={TABLE_MOUNTAIN}
-            data-verb="unfurl"
-            strokeWidth={1.5}
-            vectorEffect="non-scaling-stroke"
-          />
-        ) : (
-          <path d={TABLE_MOUNTAIN} data-verb="draw" pathLength={1} strokeWidth={5} />
-        )}
+      <g
+        className={`stroke-motif-ink${nonScalingStroke ? " [animation-range:entry_0%_entry_100%]!" : ""}`}
+        data-verb={nonScalingStroke ? "unfurl" : undefined}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path
+          d={TABLE_MOUNTAIN_OUTLINE}
+          data-part="mountain-outline"
+          data-verb={nonScalingStroke ? undefined : "draw"}
+          pathLength={1}
+          strokeWidth={nonScalingStroke ? 1.35 : 4}
+          vectorEffect={nonScalingStroke ? "non-scaling-stroke" : undefined}
+        />
+        <g data-part="mountain-engraving" strokeOpacity={0.42}>
+          {TABLE_MOUNTAIN_ENGRAVING.map((d, index) => (
+            <path
+              d={d}
+              data-verb={nonScalingStroke ? undefined : "draw"}
+              key={d}
+              pathLength={1}
+              strokeWidth={nonScalingStroke ? 0.75 : 1.4}
+              style={nonScalingStroke ? undefined : stepStyle((step ?? 0) + 2 + index / 3)}
+              vectorEffect={nonScalingStroke ? "non-scaling-stroke" : undefined}
+            />
+          ))}
+        </g>
+        <g data-part="cape-shore" strokeOpacity={0.32}>
+          {CAPE_SHORE.map((d, index) => (
+            <path
+              d={d}
+              data-verb={nonScalingStroke ? undefined : "draw"}
+              key={d}
+              pathLength={1}
+              strokeWidth={nonScalingStroke ? 0.65 : 1.2}
+              style={nonScalingStroke ? undefined : stepStyle((step ?? 0) + 5 + index)}
+              vectorEffect={nonScalingStroke ? "non-scaling-stroke" : undefined}
+            />
+          ))}
+        </g>
       </g>
     </g>
   );

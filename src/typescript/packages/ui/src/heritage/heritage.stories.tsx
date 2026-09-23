@@ -3,13 +3,17 @@ import type { ReactNode } from "react";
 
 import {
   Anchor,
+  ArchivalSeal,
   AntiqueLamp,
+  CompassStar,
   DotField,
+  FloraDivider,
   HeritageMark,
   heritageMotifs,
   InstitutionalDevice,
   Lotus,
   Motif,
+  MotifRule,
   MottoCallout,
   MottoRibbon,
   MottoScroll,
@@ -57,6 +61,7 @@ const PARTS: [string, ReactNode][] = [
   ["Anchor", <Anchor key="anchor" />],
   ["Antique lamp", <AntiqueLamp key="lamp" />],
   ["Mural crown", <MuralCrown key="crown" />],
+  ["Compass star", <CompassStar key="star" />],
   ["Motto ribbon", <MottoRibbon key="ribbon" text="Spectemur Agendo" />],
 ];
 
@@ -167,12 +172,16 @@ export const ScrollContainer: Story = {
 export const Ornaments: Story = {
   render: () => (
     <div className="max-w-3xl space-y-10">
+      <MotifRule />
+      <MotifRule motif="rose" size="md" />
       <ShuttleDivider />
+      <FloraDivider />
       <DotField />
       <DotField columns={24} rows={2} tone="ink" />
       <div className="flex gap-6">
         <PalmCorner className="size-40" />
         <PalmCorner className="size-40" side="right" />
+        <ArchivalSeal className="size-40" />
       </div>
       <TableMountainLine />
     </div>

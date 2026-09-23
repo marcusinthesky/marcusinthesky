@@ -7,22 +7,6 @@ type Point = readonly [number, number];
 const round = (value: number) => Math.round(value * 10) / 10;
 const pt = ([x, y]: Point) => `${round(x)} ${round(y)}`;
 
-/** A pointed lens-shaped petal or leaf from `base`, `length` long, at `angle` degrees from up. */
-function petal(base: Point, angle: number, length: number, width: number, bend = 0) {
-  const a = (angle * Math.PI) / 180;
-  const u: Point = [Math.sin(a), -Math.cos(a)];
-  const n: Point = [-u[1], u[0]];
-  const at = (along: number, across: number): Point => [
-    base[0] + u[0] * along + n[0] * across + bend * along * along * 0.004 * n[0],
-    base[1] + u[1] * along + n[1] * across + bend * along * along * 0.004 * n[1],
-  ];
-  const tip = at(length, 0);
-  return {
-    d: `M${pt(base)}C${pt(at(length * 0.3, width))} ${pt(at(length * 0.72, width * 0.72))} ${pt(tip)}C${pt(at(length * 0.72, -width * 0.72))} ${pt(at(length * 0.3, -width))} ${pt(base)}Z`,
-    vein: `M${pt(at(length * 0.12, 0))}L${pt(at(length * 0.8, 0))}`,
-  };
-}
-
 /**
  * An upright pointed petal or leaf with its base at the origin: the outline, the
  * lit half (a paper wash left of the midrib, as on the engraved identity sheet)
@@ -174,7 +158,10 @@ const ROSE_BARB = blade(124, 26);
 const ROSE_ANGLES = [0, 72, 144, 216, 288];
 const ROSE_SEEDS = Array.from({ length: 12 }, (_, i) => {
   const a = (i * 30 * Math.PI) / 180;
-  return { cx: round(128 + Math.sin(a) * 20), cy: round(128 - Math.cos(a) * 20) };
+  return {
+    cx: round(128 + Math.sin(a) * 20),
+    cy: round(128 - Math.cos(a) * 20),
+  };
 });
 
 function RosePetal({
@@ -223,12 +210,7 @@ export function Rose({ className, step, transform }: PartProps) {
           <RosePetal angle={angle} key={`outer-${angle}`} petal={ROSE_OUTER} step={base + 1} />
         ))}
         {ROSE_ANGLES.map((angle) => (
-          <RosePetal
-            angle={angle + 36}
-            key={`inner-${angle}`}
-            petal={ROSE_INNER}
-            step={base + 2}
-          />
+          <RosePetal angle={angle + 36} key={`inner-${angle}`} petal={ROSE_INNER} step={base + 2} />
         ))}
         <g data-verb="bloom" style={stepStyle(base + 3)}>
           <circle
@@ -303,7 +285,16 @@ export function Shuttle({ className, step, transform }: PartProps) {
           y={112}
         />
         <path d={SHUTTLE_THREADS} fill="none" strokeOpacity={0.7} strokeWidth={1.2} />
-        <rect className="fill-motif-ink" height={32} rx={10} stroke="none" fillOpacity={0.14} width={100} x={78} y={112} />
+        <rect
+          className="fill-motif-ink"
+          height={32}
+          rx={10}
+          stroke="none"
+          fillOpacity={0.14}
+          width={100}
+          x={78}
+          y={112}
+        />
         <path d="M80 128H176" fill="none" strokeWidth={1.5} />
         <path className="fill-motif-ink" d="M72 118H80V138H72Z" />
         <path className="fill-motif-ink" d="M176 118H184V138H176Z" />
@@ -350,7 +341,13 @@ const PALM_LEAFLETS = LEAFLET_LENGTHS.flatMap((length, i) => {
   const width = 10.5 - i * 0.45;
   return [
     { p, angle: angle - spread, i, side: "a", ...leaflet(length, width, 0.22) },
-    { p, angle: angle + spread, i, side: "b", ...leaflet(length * 0.94, width, -0.22) },
+    {
+      p,
+      angle: angle + spread,
+      i,
+      side: "b",
+      ...leaflet(length * 0.94, width, -0.22),
+    },
   ];
 });
 const PALM_TIP = { ...stemAt(0.985), ...leaflet(24, 5, 0) };
@@ -459,7 +456,9 @@ const HAND_FINGERS = [
  */
 const HAND_INNER = "M117.5 124C122 140 127 150 127.5 166V190C124 210 116 232 110 256";
 const HAND_OUTER = "M62 256C66 234 71 210 70 190C68 170 72 150 73.5 132";
-const HAND_THUMB = "M106 206C107 180 112 154 119 130A4.5 4.5 0 0 1 127.5 132C127 156 126 180 124 202";
+const HAND_FILL = `${HAND_INNER}H62C66 234 71 210 70 190C68 170 72 150 73.5 132Z`;
+const HAND_THUMB =
+  "M106 206C107 180 112 154 119 130A4.5 4.5 0 0 1 127.5 132C127 156 126 180 124 202";
 
 function Hand() {
   return (
@@ -471,11 +470,16 @@ function Hand() {
           <path d={f.crease} fill="none" strokeOpacity={0.4} strokeWidth={1.25} />
         </g>
       ))}
-      <path d={`${HAND_INNER}H62${HAND_OUTER.slice(7)}Z`} stroke="none" />
+      <path d={HAND_FILL} stroke="none" />
       <path d={HAND_INNER} fill="none" />
       <path d={HAND_OUTER} fill="none" />
       <path d={HAND_THUMB} />
-      <path d="M119 131Q122 128 125 131M106 184Q112 181 117 184M76 228Q92 232 108 226" fill="none" strokeOpacity={0.4} strokeWidth={1.25} />
+      <path
+        d="M119 131Q122 128 125 131M106 184Q112 181 117 184M76 228Q92 232 108 226"
+        fill="none"
+        strokeOpacity={0.4}
+        strokeWidth={1.25}
+      />
     </>
   );
 }
@@ -528,8 +532,22 @@ export function Torse({ className, step, transform }: PartProps) {
               <path d="M-16 -4Q0 -9 16 -4" fill="none" strokeOpacity={0.3} strokeWidth={1.25} />
             </g>
           ))}
-          <rect className="fill-motif-ink" height={12} opacity={0.14} stroke="none" width={256} y={134} />
-          <rect className="fill-motif-paper" height={6} opacity={0.35} stroke="none" width={256} y={114} />
+          <rect
+            className="fill-motif-ink"
+            height={12}
+            opacity={0.14}
+            stroke="none"
+            width={256}
+            y={134}
+          />
+          <rect
+            className="fill-motif-paper"
+            height={6}
+            opacity={0.35}
+            stroke="none"
+            width={256}
+            y={114}
+          />
         </g>
         <path d={TORSE_OUTLINE} fill="none" strokeWidth={3} />
       </g>
@@ -544,7 +562,12 @@ export function MottoScroll({ className, step, text = "PRECOR", transform }: Mot
   const baseline = useId();
   return (
     <g className={className} data-part="motto" style={stepStyle(step)} transform={transform}>
-      <g className="stroke-motif-ink" data-verb="unfurl" strokeLinecap="round" strokeLinejoin="round">
+      <g
+        className="stroke-motif-ink"
+        data-verb="unfurl"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         {/* Rolled ends behind the band, each capped with a red roundel. */}
         <g className="fill-motif-gold" strokeWidth={2.5}>
           <path d="M48 92C36 88 24 92 22 102V144C24 154 36 156 48 150Z" />

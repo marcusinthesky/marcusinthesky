@@ -35,38 +35,40 @@ export function Anchor({ className, step, transform }: PartProps) {
   );
 }
 
-/** Antique oil lamp with handle, lid and a flame at the spout: learning. */
+/** Antique oil lamp with handle, domed lid, foot and a flame at the spout: learning. */
 export function AntiqueLamp({ className, step, transform }: PartProps) {
   return (
     <g className={className} data-part="lamp" style={stepStyle(step)} transform={transform}>
       <g data-verb="settle">
         <path
           className="stroke-motif-metal"
-          d="M66 162C34 162 32 124 58 122C70 122 78 132 80 140"
+          d="M64 158C36 160 30 126 54 120C67 117 77 125 81 134"
           fill="none"
-          pathLength={1}
           strokeLinecap="round"
           strokeWidth={8}
         />
         <g className="fill-motif-metal">
-          <path d="M62 168C62 142 96 130 128 130C158 130 176 140 198 134L224 120C230 117 236 122 232 128L208 152C198 170 176 180 140 182H86C70 182 62 178 62 168Z" />
-          <path d="M106 180L98 202H162L154 180Z" />
-          <path d="M100 132C104 114 152 114 156 132Z" />
-          <circle cx={128} cy={110} r={7} />
+          <path d="M58 160C58 138 88 124 124 124C150 124 170 132 190 136L224 118C231 114 238 120 233 126L206 152C196 167 170 177 136 179H84C68 179 58 173 58 160Z" />
+          <path d="M104 177C104 187 97 193 92 200H164C159 193 152 187 152 177Z" />
+          <path d="M100 127C102 108 152 108 154 127Z" />
+          <path d="M122 110H132V100H122Z" />
+          <circle cx={127} cy={96} r={7} />
+        </g>
+        {/* Engraved highlights: the lip of the lid, a band round the body, the foot ring. */}
+        <g className="stroke-motif-paper" fill="none" strokeLinecap="round" strokeOpacity={0.6}>
+          <path d="M104 126H150" strokeWidth={2.5} />
+          <path d="M70 158C104 150 150 152 198 144" strokeWidth={3} />
+          <path d="M80 140C96 134 112 132 128 132" strokeWidth={1.75} />
+          <path d="M98 194H158" strokeWidth={1.75} />
         </g>
         <path
-          className="stroke-motif-paper"
-          d="M76 160C110 154 150 156 196 146"
-          fill="none"
-          strokeWidth={3}
-        />
-        <path
-          className="fill-motif-gold"
-          d="M231 116C216 98 222 78 236 56C250 80 252 100 231 116Z"
+          className="fill-motif-gold stroke-motif-metal"
+          d="M231 114C216 98 221 78 235 56C249 80 252 98 231 114Z"
+          strokeWidth={1.5}
         />
         <path
           className="fill-motif-paper"
-          d="M232 110C226 100 228 90 235 80C241 92 240 102 232 110Z"
+          d="M232 108C226 99 228 89 235 78C241 90 240 100 232 108Z"
         />
       </g>
     </g>

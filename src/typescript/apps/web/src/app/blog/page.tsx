@@ -15,13 +15,14 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   const orderedWriting = [...writing].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
   return (
-    <div className="page-shell" data-chapter="rose">
+    <div className="page-shell" data-chapter="rose" data-nav="writing">
       <PageHero
         motif="rose"
         description="The machinery around the research: reproducibility, computational provenance, research infrastructure, modelling choices, and the consequences of treating analysis as software. Some essays are published elsewhere; this site keeps a durable index."
         eyebrow="Writing"
         title="Working notes on research, software, and evidence"
         figure={{
+          name: "Kalman filter",
           caption: "Noisy observations → a filtered estimate of the latent state",
           content: <KalmanFilter />,
         }}

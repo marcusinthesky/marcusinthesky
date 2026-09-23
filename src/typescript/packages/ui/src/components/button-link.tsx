@@ -20,12 +20,20 @@ export function ButtonLink({
   variant = "primary",
   ...props
 }: ButtonLinkProps) {
-  const base = variant === "text" ? "" : "no-underline";
+  const framed = variant !== "text";
   return (
     <a
-      className={`group/button label-md inline-flex items-center justify-center gap-2 rounded-none transition-colors duration-300 ${base} ${variants[variant]} ${className}`}
+      className={`group/button label-md relative inline-flex items-center justify-center gap-2 rounded-none transition-colors duration-300 ${framed ? "no-underline" : ""} ${variants[variant]} ${className}`}
       {...props}
     >
+      {/* The chapter thread takes the bottom edge on hover and keyboard focus. */}
+      {framed ? (
+        <span
+          aria-hidden="true"
+          className="absolute -inset-x-px -bottom-px h-0.5 origin-left scale-x-0 bg-chapter transition-transform duration-300 ease-out-expo group-hover/button:scale-x-100 group-focus-visible/button:scale-x-100"
+          data-part="thread"
+        />
+      ) : null}
       {children}
       {arrow ? (
         <span

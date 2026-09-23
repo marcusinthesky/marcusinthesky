@@ -9,12 +9,16 @@ export function WritingCard({ entry, headingLevel = 2 }: { entry: Writing; headi
   const Heading = headingLevel === 2 ? "h2" : "h3";
 
   return (
-    <Card className="flex h-full flex-col">
-      <p className="label-md text-primary">
-        {entry.source} ·{" "}
-        <time dateTime={entry.publishedAt}>{published.format(new Date(entry.publishedAt))}</time>
-      </p>
-      <Heading className="mt-4 font-serif text-2xl font-medium leading-snug">{entry.title}</Heading>
+    <Card
+      caption={
+        <>
+          {entry.source} ·{" "}
+          <time dateTime={entry.publishedAt}>{published.format(new Date(entry.publishedAt))}</time>
+        </>
+      }
+      className="h-full"
+    >
+      <Heading className="font-serif text-2xl font-medium leading-snug">{entry.title}</Heading>
       <p className="mt-3 flex-1 text-muted-foreground">{entry.summary}</p>
       <a
         className="mt-6 inline-flex min-h-11 items-center gap-2 self-start label-md text-primary after:absolute after:inset-0"

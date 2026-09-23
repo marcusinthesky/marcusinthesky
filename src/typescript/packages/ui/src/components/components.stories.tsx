@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Badge, ButtonLink, Card, SectionHeading } from "../index";
+import { Badge, ButtonLink, Card, Lotus, Motif, Plate, SectionHeading } from "../index";
 
 const meta = {
   title: "System/Editorial components",
@@ -66,6 +66,29 @@ export const Chapters: Story = {
           </Card>
         </section>
       ))}
+    </div>
+  ),
+};
+
+/** Specimens: an emblem plate beside a card whose metadata sits beneath the frame. */
+export const Plates: Story = {
+  render: () => (
+    <div className="grid w-[min(44rem,90vw)] items-start gap-6 p-6 sm:grid-cols-[12rem_1fr]">
+      <Plate caption="Lotus" note="Nelumbo nucifera.">
+        <Motif className="mx-auto block aspect-square w-4/5" motion="none" viewBox="0 0 256 256">
+          <Lotus />
+        </Motif>
+      </Plate>
+      <Card caption="Python · Lean 4 · LaTeX">
+        <h3 className="font-serif text-2xl">A specimen card</h3>
+        <p className="mt-3 text-muted-foreground">
+          The frame holds the argument; the label beneath it holds the metadata.
+        </p>
+        <div className="mt-5 flex gap-2">
+          <Badge>2024</Badge>
+          <Badge>Preprint</Badge>
+        </div>
+      </Card>
     </div>
   ),
 };

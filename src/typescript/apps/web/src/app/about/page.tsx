@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
 
 import { education, experience, profile } from "@marcusinthesky/content";
-import { Badge, Card, HeritageMark, MottoCallout, Timeline } from "@marcusinthesky/ui";
+import {
+  ArchivalSeal,
+  Badge,
+  Card,
+  FloraDivider,
+  HeritageMark,
+  MottoCallout,
+  Timeline,
+} from "@marcusinthesky/ui";
 
+import { Emblem } from "@/components/emblem-plate";
 import { PageHero } from "@/components/page-hero";
 
 export const metadata: Metadata = {
@@ -26,15 +35,28 @@ const principles = [
 
 export default function AboutPage() {
   return (
-    <div className="page-shell" data-chapter="palm">
+    <div className="page-shell" data-chapter="palm" data-nav="about">
       <PageHero
         description="I work where mathematical research, computation, and real-world systems meet."
         eyebrow="About"
+        figure={{
+          name: "Palm fronds",
+          caption: "Phoenix dactylifera",
+          content: <Emblem motif="palm" />,
+        }}
+        motif="rook"
         title="Quantitative researcher. Research engineer. Technology leader."
       />
 
       <section className="grid gap-10 border-t border-border py-14 lg:grid-cols-[0.72fr_1.28fr]">
-        <h2 className="font-serif text-3xl">How evidence is constructed</h2>
+        <div>
+          <h2 className="font-serif text-3xl">How evidence is constructed</h2>
+          <ArchivalSeal
+            bottom="Cape Town"
+            className="mt-10 hidden size-40 opacity-80 lg:block"
+            top="Scientia · Spes · Praxis"
+          />
+        </div>
         <div>
           <p className="max-w-2xl text-lg text-muted-foreground">
             My background spans quantitative research, financial technology, software engineering,
@@ -80,11 +102,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div aria-hidden="true" className="flex items-center gap-4 py-2">
-        <span className="h-px flex-1 bg-border" />
-        <HeritageMark motif="rose" size="sm" />
-        <span className="h-px flex-1 bg-border" />
-      </div>
+      <FloraDivider />
 
       <section className="grid gap-10 py-14 lg:grid-cols-[0.72fr_1.28fr]">
         <div>

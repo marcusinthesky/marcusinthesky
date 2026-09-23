@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { projects } from "@marcusinthesky/content";
-import { HeritageMark, ShuttleDivider } from "@marcusinthesky/ui";
+import { MotifRule, ShuttleDivider } from "@marcusinthesky/ui";
 
 import { PageHero } from "@/components/page-hero";
 import { ParetoFrontier } from "@/components/pareto-frontier";
@@ -15,13 +15,14 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="page-shell">
+    <div className="page-shell" data-nav="projects">
       <PageHero
         motif="shuttle"
         description="Public work selected for the strength of its question, evidence, architecture, or explanatory surface—not for repository count."
         eyebrow="Projects"
         title="Research and software as durable systems"
         figure={{
+          name: "Pareto frontier",
           caption: "Candidate decisions → the non-dominated frontier → a choice",
           content: <ParetoFrontier />,
         }}
@@ -32,11 +33,7 @@ export default function ProjectsPage() {
           <ProjectCard key={project.slug} project={project} />
         ))}
       </section>
-      <div aria-hidden="true" className="flex items-center gap-4 py-6">
-        <span className="h-px flex-1 bg-border" />
-        <HeritageMark motif="anchor" motion="scroll" size="md" />
-        <span className="h-px flex-1 bg-border" />
-      </div>
+      <MotifRule className="py-6" motif="anchor" />
     </div>
   );
 }

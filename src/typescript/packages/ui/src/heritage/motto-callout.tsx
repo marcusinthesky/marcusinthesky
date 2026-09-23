@@ -33,7 +33,7 @@ export function MottoCallout({ className, institution }: MottoCalloutProps) {
           className="mb-2 h-10 w-auto"
           motion="scroll"
           tone={institution}
-          viewBox="0 64 256 90"
+          viewBox="8 80 240 84"
         >
           <MottoRibbon text={motto} />
         </Motif>

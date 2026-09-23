@@ -3,6 +3,7 @@
 @import "../components/kalman-filter.css";
 @import "../components/pareto-frontier.css";
 @import "../components/pca-cloud.css";
+@import "../components/site-header.css";
 
 .page-shell {
   width: min(calc(100% - 2rem), var(--content-width));

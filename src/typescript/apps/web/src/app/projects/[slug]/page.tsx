@@ -31,7 +31,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   if (!project) notFound();
 
   return (
-    <div className="page-shell">
+    <div className="page-shell" data-nav="projects">
       <JsonLd
         data={{
           "@context": "https://schema.org",
