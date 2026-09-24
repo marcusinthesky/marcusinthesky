@@ -7,12 +7,13 @@ import { AskAi, researchPrompt } from "@/components/ask-ai";
 import { MonteCarloFan } from "@/components/monte-carlo-fan";
 import { PageHero } from "@/components/page-hero";
 import { PublicationCard } from "@/components/publication-card";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Publications",
   description: "Publications and research outputs by Marcus Gawronsky.",
-  alternates: { canonical: "/publications/" },
-};
+  path: "/publications/",
+});
 
 export default function PublicationsPage() {
   const structuredData = publications.map((publication) => ({

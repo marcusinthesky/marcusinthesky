@@ -12,6 +12,10 @@ concurrency:
   group: quality-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  # The portfolio is served from the root of the user site; there is no base path.
+  NEXT_PUBLIC_SITE_URL: https://marcusinthesky.github.io
+
 jobs:
   quality:
     runs-on: ubuntu-latest
@@ -37,3 +41,70 @@ jobs:
       - run: bun run test:lighthouse
       - run: bun --cwd apps/web audit:privacy
       - run: bun --cwd apps/web audit:export
+      # Publish exactly the export the gates above exercised.
+      - if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v7
+        with:
+          name: site
+          path: src/typescript/apps/web/out
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    needs: quality
+    if: github.repository == 'marcusinthesky/marcusinthesky' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: portfolio
+      url: https://marcusinthesky.github.io/
+    concurrency:
+      group: portfolio-deploy
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: site
+      - name: Push the checked export to marcusinthesky.github.io@gh-pages
+        env:
+          DEPLOY_KEY: ${{ secrets.PORTFOLIO_DEPLOY_KEY }}
+          PAGES_REPOSITORY: git@github.com:marcusinthesky/marcusinthesky.github.io.git
+          PAGES_BRANCH: gh-pages
+        run: |
+          set -euo pipefail
+          if [ -z "$DEPLOY_KEY" ]; then
+            echo "::error::PORTFOLIO_DEPLOY_KEY is not configured for the portfolio environment" >&2
+            exit 1
+          fi
+          test -f site/index.html
+          test -f site/.nojekyll
+
+          key="$RUNNER_TEMP/portfolio_deploy_key"
+          install -m 600 /dev/null "$key"
+          printf '%s\n' "$DEPLOY_KEY" > "$key"
+          ssh-keyscan -t ed25519 github.com > "$RUNNER_TEMP/known_hosts"
+          export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o UserKnownHostsFile=$RUNNER_TEMP/known_hosts"
+
+          publish="$RUNNER_TEMP/publish"
+          if git ls-remote --exit-code --heads "$PAGES_REPOSITORY" "$PAGES_BRANCH" > /dev/null; then
+            git clone --depth 1 --branch "$PAGES_BRANCH" "$PAGES_REPOSITORY" "$publish"
+          else
+            git init --initial-branch "$PAGES_BRANCH" "$publish"
+            git -C "$publish" remote add origin "$PAGES_REPOSITORY"
+          fi
+
+          find "$publish" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a site/. "$publish/"
+
+          cd "$publish"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+          if git diff --cached --quiet; then
+            echo "The published export is already current."
+            exit 0
+          fi
+          git commit --quiet -m "deploy: ${GITHUB_REPOSITORY}@${GITHUB_SHA}"
+          git push origin "HEAD:${PAGES_BRANCH}"

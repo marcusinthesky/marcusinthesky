@@ -7,6 +7,7 @@ import { Badge, ButtonLink } from "@marcusinthesky/ui";
 import { BrandIcon } from "@/components/brand-icon";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
+import { pageMetadata } from "@/lib/metadata";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
 
@@ -18,11 +19,11 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const { slug } = await params;
   const project = projects.find((candidate) => candidate.slug === slug);
   if (!project) return {};
-  return {
+  return pageMetadata({
     title: project.title,
     description: project.summary,
-    alternates: { canonical: `/projects/${project.slug}/` },
-  };
+    path: `/projects/${project.slug}/`,
+  });
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {

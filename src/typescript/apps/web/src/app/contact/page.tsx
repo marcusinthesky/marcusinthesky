@@ -5,12 +5,13 @@ import { ButtonLink, Card } from "@marcusinthesky/ui";
 
 import { PageHero } from "@/components/page-hero";
 import { BrandIcon } from "@/components/brand-icon";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description: "Public channels for contacting Marcus Gawronsky.",
-  alternates: { canonical: "/contact/" },
-};
+  path: "/contact/",
+});
 
 export default function ContactPage() {
   const links = profile.links.filter(({ label }) => ["GitHub", "LinkedIn"].includes(label));

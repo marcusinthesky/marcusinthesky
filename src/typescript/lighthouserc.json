@@ -4,11 +4,11 @@
       "startServerCommand": "bun --cwd apps/web start",
       "startServerReadyPattern": "Serving",
       "url": [
-        "http://127.0.0.1:3000/",
-        "http://127.0.0.1:3000/publications/",
-        "http://127.0.0.1:3000/projects/pricing-perspective/",
-        "http://127.0.0.1:3000/blog/",
-        "http://127.0.0.1:3000/cv/"
+        "http://127.0.0.1:4173/",
+        "http://127.0.0.1:4173/publications/",
+        "http://127.0.0.1:4173/projects/pricing-perspective/",
+        "http://127.0.0.1:4173/blog/",
+        "http://127.0.0.1:4173/cv/"
       ],
       "numberOfRuns": 3,
       "settings": { "preset": "desktop" }

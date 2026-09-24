@@ -13,12 +13,13 @@ import {
 
 import { Emblem } from "@/components/emblem-plate";
 import { PageHero } from "@/components/page-hero";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description: "Professional background, interests, and education of Marcus Gawronsky.",
-  alternates: { canonical: "/about/" },
-};
+  path: "/about/",
+});
 
 function educationMotif(qualification: string) {
   if (qualification.startsWith("PhD")) return "lamp" as const;

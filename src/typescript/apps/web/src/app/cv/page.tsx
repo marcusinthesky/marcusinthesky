@@ -5,12 +5,13 @@ import { Badge, ButtonLink, Card } from "@marcusinthesky/ui";
 import { Download } from "lucide-react";
 
 import { PageHero } from "@/components/page-hero";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Curriculum vitae",
   description: "Public curriculum vitae of Marcus Gawronsky.",
-  alternates: { canonical: "/cv/" },
-};
+  path: "/cv/",
+});
 
 export default function CvPage() {
   return (

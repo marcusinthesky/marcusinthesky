@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Locator } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 
 const routes = [
   "/",
@@ -12,6 +12,24 @@ const routes = [
   "/contact/",
 ];
 
+/**
+ * Lets time-based entrance animations finish so axe measures the colours visitors read,
+ * not an intermediate frame of a fade. Infinite and scroll-driven animations never finish.
+ */
+const settleEntranceAnimations = (page: Page) =>
+  page.evaluate(() =>
+    Promise.all(
+      document
+        .getAnimations()
+        .filter(
+          (animation) =>
+            animation.timeline === document.timeline &&
+            Number.isFinite(Number(animation.effect?.getComputedTiming().endTime)),
+        )
+        .map((animation) => animation.finished.catch(() => undefined)),
+    ),
+  );
+
 for (const route of routes) {
   test(`${route} is navigable and accessible`, async ({ page }) => {
     const response = await page.goto(route);
@@ -19,10 +37,85 @@ for (const route of routes) {
     await expect(page.locator("main")).toBeVisible();
     await expect(page.locator("h1")).toHaveCount(1);
 
+    await settleEntranceAnimations(page);
     const results = await new AxeBuilder({ page }).analyze();
     expect(results.violations).toEqual([]);
   });
 }
+
+const viewports = [
+  ["desktop", { width: 1280, height: 800 }],
+  ["mobile", { width: 375, height: 800 }],
+] as const;
+
+// GitHub Pages derives Content-Type from the file extension; the local server mirrors it.
+const resourceTypes = [
+  [/\.css$/, "text/css"],
+  [/\.woff2$/, "font/woff2"],
+  [/\.svg$/, "image/svg+xml"],
+  [/\.png$/, "image/png"],
+] as const;
+
+/** The resolved paper token and the body background it should paint. */
+const paper = (page: Page) =>
+  page.evaluate(() => {
+    const probe = document.createElement("div");
+    probe.style.backgroundColor = "var(--background)";
+    document.body.append(probe);
+    const token = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return { body: getComputedStyle(document.body).backgroundColor, token };
+  });
+
+for (const route of [...routes, "/projects/pricing-perspective/"]) {
+  for (const [name, viewport] of viewports) {
+    test(`${route} loads and styles every local resource at ${name} width`, async ({ page }) => {
+      await page.setViewportSize(viewport);
+      const failures: string[] = [];
+      page.on("requestfailed", (request) =>
+        failures.push(`${request.url()} ${request.failure()?.errorText}`),
+      );
+      page.on("response", (response) => {
+        if (response.status() >= 400) failures.push(`${response.status()} ${response.url()}`);
+        const { pathname } = new URL(response.url());
+        const type = response.headers()["content-type"] ?? "";
+        for (const [pattern, expected] of resourceTypes) {
+          if (pattern.test(pathname) && !type.startsWith(expected)) {
+            failures.push(`${response.url()} served as ${type}`);
+          }
+        }
+      });
+
+      const response = await page.goto(route);
+      expect(response?.status()).toBe(200);
+      await page.evaluate(() => document.fonts.ready);
+      expect(failures).toEqual([]);
+
+      const { body, token } = await paper(page);
+      expect(token).not.toBe("rgba(0, 0, 0, 0)");
+      expect(body).toBe(token);
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= document.documentElement.clientWidth,
+        ),
+      ).toBe(true);
+    });
+  }
+}
+
+test("unknown addresses receive the styled not-found page", async ({ page }) => {
+  const response = await page.goto("/no-such-page/");
+  expect(response?.status()).toBe(404);
+  await expect(page.locator("h1")).toHaveCount(1);
+  const { body, token } = await paper(page);
+  expect(body).toBe(token);
+});
+
+test("the retired writing address forwards to the blog", async ({ page }) => {
+  await page.goto("/writing/");
+  await expect(page).toHaveURL(/\/blog\/$/);
+  await expect(page.locator("h1")).toHaveCount(1);
+});
 
 test("the public CV is downloadable", async ({ request }) => {
   const response = await request.get("/cv/Marcus-Gawronsky-CV.pdf");
