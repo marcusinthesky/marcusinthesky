@@ -5,12 +5,13 @@ import { writing } from "@marcusinthesky/content";
 import { KalmanFilter } from "@/components/kalman-filter";
 import { PageHero } from "@/components/page-hero";
 import { WritingCard } from "@/components/writing-card";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Writing",
   description: "Selected technical and research writing by Marcus Gawronsky.",
-  alternates: { canonical: "/blog/" },
-};
+  path: "/blog/",
+});
 
 export default function BlogPage() {
   const orderedWriting = [...writing].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));

@@ -6,7 +6,8 @@ import { profile } from "@marcusinthesky/content";
 import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { absoluteUrl, site } from "@/lib/site";
+import { pageMetadata } from "@/lib/metadata";
+import { site } from "@/lib/site";
 
 import "./globals.css";
 
@@ -27,26 +28,7 @@ export const metadata: Metadata = {
   authors: [{ name: profile.name, url: site.url }],
   creator: profile.name,
   icons: { icon: "/icon.svg" },
-  alternates: {
-    canonical: "/",
-    types: {
-      "application/rss+xml": absoluteUrl("/feed.xml"),
-      "application/feed+json": absoluteUrl("/feed.json"),
-    },
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_ZA",
-    url: site.url,
-    title: site.title,
-    description: site.description,
-    siteName: site.name,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: site.title,
-    description: site.description,
-  },
+  ...pageMetadata({ description: site.description, path: "/" }),
 };
 
 export const viewport: Viewport = {

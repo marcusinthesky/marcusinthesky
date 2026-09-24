@@ -6,12 +6,13 @@ import { MotifRule, ShuttleDivider } from "@marcusinthesky/ui";
 import { PageHero } from "@/components/page-hero";
 import { ParetoFrontier } from "@/components/pareto-frontier";
 import { ProjectCard } from "@/components/project-card";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Projects",
   description: "Selected research and software projects by Marcus Gawronsky.",
-  alternates: { canonical: "/projects/" },
-};
+  path: "/projects/",
+});
 
 export default function ProjectsPage() {
   return (

@@ -12,9 +12,10 @@ dev:
 build: cv-build
     cd src/typescript && bun run build
 
+# The CV prints no build date; pinning PDF metadata makes the tracked PDF reproducible.
 cv-build:
     mkdir -p src/latex/cv/build src/typescript/apps/web/public/cv
-    cd src/latex/cv && XDG_CACHE_HOME="$PWD/../../../.devenv/cache" tectonic --outdir build resume.tex
+    cd src/latex/cv && SOURCE_DATE_EPOCH=0 XDG_CACHE_HOME="$PWD/../../../.devenv/cache" tectonic --outdir build resume.tex
     cp src/latex/cv/build/resume.pdf src/typescript/apps/web/public/cv/Marcus-Gawronsky-CV.pdf
 
 cv-check: cv-build

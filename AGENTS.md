@@ -8,3 +8,4 @@
 - Treat `src/latex/cv` as the canonical public CV and refresh its typed web projection in the same change.
 - Follow `DESIGN.md` for visual decisions; update it in the same change when a canonical rule changes.
 - Generated files under `public/data`, feeds, `llms*.txt`, and CV PDFs belong to their generators.
+- Publish only through the `deploy` job in `.github/workflows/ci.yml`; never add a Pages workflow, `basePath`, or `assetPrefix` here (see `ARCHITECTURE.md`).

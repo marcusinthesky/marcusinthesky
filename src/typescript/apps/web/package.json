@@ -12,7 +12,7 @@
     "typecheck": "tsc --noEmit",
     "test": "bun test src",
     "audit:privacy": "bun scripts/audit-privacy.ts",
-    "audit:export": "bun scripts/audit-export.ts"
+    "audit:export": "bun scripts/audit-export.ts && bun scripts/audit-publishing.ts"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "7.3.1",

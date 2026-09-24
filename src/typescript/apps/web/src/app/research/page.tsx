@@ -6,13 +6,14 @@ import { Badge, ButtonLink, Card } from "@marcusinthesky/ui";
 import { PageHero } from "@/components/page-hero";
 import { PcaCloud } from "@/components/pca-cloud";
 import { PublicationCard } from "@/components/publication-card";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Research",
   description:
     "Research programme and methods spanning quantitative finance and information geometry.",
-  alternates: { canonical: "/research/" },
-};
+  path: "/research/",
+});
 
 export default function ResearchPage() {
   return (
