@@ -21,9 +21,9 @@ My work spans information geometry, representation learning, spatial econometric
 ## Latest writing
 
 <!-- WRITING:START -->
-- [Reproducibility is a Graph](https://marcusinthesky.github.io/PricingPerspective/blog/reproducibility-is-a-graph/) — Pricing Perspective
-- [The Tidal Wave of AI Research in Finance](https://marcusinthesky.github.io/PricingPerspective/blog/tidal-wave-of-ai-research-in-finance/) — Pricing Perspective
-- [Vintage Reproducible ET Tax Models](https://marcusinthesky.github.io/PricingPerspective/blog/vintage-reproducible-ettax-models/) — Pricing Perspective
+- [No returns: Mega-IPOs and the promise of AI as economic measurement](https://marcusinthesky.github.io/PricingPerspective/blog/mega-ipos-ai-economic-measurement/) — Pricing Perspective
+- [What are we actually studying when we study AI in finance?](https://marcusinthesky.github.io/PricingPerspective/blog/what-are-we-studying-ai-in-finance/) — Pricing Perspective
+- [Do language models in finance need a Markowitz moment?](https://marcusinthesky.github.io/PricingPerspective/blog/language-models-markowitz-moment/) — Pricing Perspective
 <!-- WRITING:END -->
 
 ## GitHub activity
